@@ -1,0 +1,11 @@
+{
+    "number": {
+        "min": "'{{label}}' deve ser no mínimo {{min}}",
+        "max": "'{{label}}' deve ser no máximo {{max}}",
+        "integer": "'{{label}}' deve ser um número inteiro",
+        "positive": "'{{label}}' deve ser um número positivo",
+        "negative": "'{{label}}' deve ser um número negativo",
+        "lessThan": "'{{label}}' deve ser menor que {{less}}",
+        "moreThan": "'{{label}}' deve ser maior que {{more}}"
+    }
+}

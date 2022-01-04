@@ -1,0 +1,31 @@
+{
+    "expo": {
+        "version": "1.0.0",
+        "name": "Radar Solidário",
+        "slug": "radar-solidario",
+        "orientation": "portrait",
+        "entryPoint": "./src/index.tsx",
+        "assetBundlePatterns": ["**/*"],
+        "icon": "./src/assets/images/system/icon.png",
+        "updates": {
+            "fallbackToCacheTimeout": 0
+        },
+        "splash": {
+            "resizeMode": "contain",
+            "backgroundColor": "#ffffff",
+            "image": "./src/assets/images/system/splash.png"
+        },
+        "ios": {
+            "supportsTablet": true
+        },
+        "android": {
+            "adaptiveIcon": {
+                "backgroundColor": "#FFFFFF",
+                "foregroundImage": "./src/assets/images/system/adaptive-icon.png"
+            }
+        },
+        "web": {
+            "favicon": "./src/assets/images/system/favicon.png"
+        }
+    }
+}

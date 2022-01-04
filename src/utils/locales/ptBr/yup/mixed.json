@@ -1,0 +1,8 @@
+{
+    "mixed": {
+        "default": "'{{label}}' é inválido",
+        "required": "'{{label}}' é um campo obrigatório",
+        "oneOf": "'{{label}}' deve ser um dos seguintes valores: {{values}}",
+        "notOneOf": "'{{label}}' não pode ser um dos seguintes valores: {{values}}"
+    }
+}

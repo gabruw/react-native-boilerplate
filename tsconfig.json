@@ -1,0 +1,40 @@
+{
+    "extends": "expo/tsconfig.base",
+    "include": ["./src/**/*.tsx", "./src/**/*.ts"],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts",
+        "**/*.test.ts",
+        "**/*.spec.tsx",
+        "**/*.test.tsx",
+        "jest.config.js",
+        "babel.config.js",
+        "metro.config.js"
+    ],
+    "compilerOptions": {
+        "noEmit": true,
+        "pretty": true,
+        "strict": true,
+        "allowJs": true,
+        "sourceMap": true,
+        "baseUrl": "./src",
+        "module": "es2022",
+        "target": "ES2021",
+        "declaration": true,
+        "skipLibCheck": true,
+        "jsx": "react-native",
+        "esModuleInterop": true,
+        "isolatedModules": true,
+        "noImplicitReturns": true,
+        "resolveJsonModule": true,
+        "types": ["jest", "node"],
+        "moduleResolution": "node",
+        "allowUnusedLabels": false,
+        "allowUnreachableCode": false,
+        "noFallthroughCasesInSwitch": true,
+        "lib": ["ES2021", "ESNext", "DOM"],
+        "allowSyntheticDefaultImports": true,
+        "forceConsistentCasingInFileNames": true,
+        "typeRoots": ["./types", "./node_modules/@types"]
+    }
+}
