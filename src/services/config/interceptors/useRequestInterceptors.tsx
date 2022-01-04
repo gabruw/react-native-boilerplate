@@ -2,7 +2,7 @@
 
 import { AxiosError, AxiosRequestConfig } from 'axios';
 import { RequestContextStateProps } from 'models/storages/request/RequestContextProps';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useCallback } from 'react';
 import useRequestState from 'services/useRequestState';
 import { useTokenSelector } from 'storages/redux/hooks/user';
 
@@ -21,22 +21,25 @@ const useRequestInterceptors = ({ setRequestState }: RequestInterceptorsProps): 
     const { token } = useTokenSelector();
     const { setIsLoading } = useRequestState({ setRequestState });
 
-    const onRequest = (config: AxiosRequestConfig): AxiosRequestConfig => {
-        setIsLoading(true);
+    const onRequest = useCallback(
+        (config: AxiosRequestConfig): AxiosRequestConfig => {
+            setIsLoading(true);
 
-        if (token && config.headers) {
-            config.headers = {
-                Authorization: `Bearer ${token}`
-            };
-        }
+            if (token && config.headers) {
+                config.headers = {
+                    Authorization: `Bearer ${token}`
+                };
+            }
 
-        return config;
-    };
+            return config;
+        },
+        [token]
+    );
 
-    const onRequestError = (error: AxiosError): Promise<AxiosError> => {
+    const onRequestError = useCallback((error: AxiosError): Promise<AxiosError> => {
         setIsLoading(true);
         return Promise.reject(error);
-    };
+    }, []);
 
     return {
         onRequest,

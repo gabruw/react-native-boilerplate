@@ -1,5 +1,5 @@
 {
-    "names": {
+    "fields": {
         "email": "email",
         "password": "password"
     }

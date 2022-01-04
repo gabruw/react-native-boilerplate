@@ -1,13 +1,13 @@
 //#region Imports
 
+import fields from './fields.json';
 import labels from './labels.json';
-import names from './names.json';
 
 //#endregion
 
 const AuthenticationLocales = {
     ...labels,
-    ...names
+    ...fields
 };
 
 export default AuthenticationLocales;

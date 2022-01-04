@@ -26,7 +26,8 @@ const FieldInput: FC<FieldInputProps> = ({ name, label, icon, mask, isDisabled =
         formState: { errors }
     } = useFormContext();
 
-    const { field } = useController({ name, control, defaultValue: '' });
+    const tName = useMemo(() => t(name), [name]);
+    const { field } = useController({ name: tName, control, defaultValue: '' });
 
     const hasErrors = useMemo((): boolean => Boolean(Object.keys(errors).length), [errors]);
     const passwordIcon = useMemo((): string => (isTextVisible ? 'eye' : 'eye-slash'), [isTextVisible]);
@@ -58,7 +59,7 @@ const FieldInput: FC<FieldInputProps> = ({ name, label, icon, mask, isDisabled =
             />
 
             <HelperText type='error' visible={hasErrors}>
-                {errors[name]}
+                {errors[tName]?.message}
             </HelperText>
         </Fragment>
     );

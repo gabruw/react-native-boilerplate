@@ -1,17 +1,15 @@
 //#region Imports
 
-import { Dimensions, StatusBar } from 'react-native';
+import { StatusBar } from 'react-native';
 
 //#endregion
 
 const SHEET = {
     CONTAINER: {
-        width: Dimensions.get('screen').width,
-        height: Dimensions.get('screen').height
+        flex: 1
     },
     CONTENT: {
-        width: Dimensions.get('screen').width,
-        height: Dimensions.get('screen').height - Number(StatusBar.currentHeight)
+        marginTop: Number(StatusBar.currentHeight)
     }
 };
 

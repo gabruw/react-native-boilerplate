@@ -23,8 +23,6 @@ const Authentication: FC = () => {
     return (
         <Fragment>
             <Button onPress={() => toggleTheme()}>Toggle Theme</Button>
-            <Button onPress={() => fetchLogin({ email: '', password: '' })}>Refetch</Button>
-
             <Button onPress={() => navigate(ROUTE_NAMES.TABS.THIS, { screen: ROUTE_NAMES.TABS.STOCK })}>
                 Go to Tabs
             </Button>
