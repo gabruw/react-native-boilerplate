@@ -12,7 +12,8 @@ import ROUTE_NAMES from './route-names';
 export const STACK_ROUTES: Array<StackNavigatorProps> = [
     {
         name: ROUTE_NAMES.STACK.AUTHENTICATION,
-        component: Authentication
+        component: Authentication,
+        options: { headerShown: false }
     }
 ];
 

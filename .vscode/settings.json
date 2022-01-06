@@ -138,5 +138,6 @@
     "explorer.confirmDelete": false,
     "search.exclude": {
         "**/node_modules/**/*": true
-    }
+    },
+    "cSpell.language": "en,pt,pt-BR"
 }

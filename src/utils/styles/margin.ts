@@ -1,6 +1,8 @@
-const SPACE = {
-    PAGE: '25px 45px',
-    PAGE_MOBILE: '25px 20px'
+const MARGIN = {
+    CONTAINER: {
+        paddingVertical: 10,
+        paddingHorizontal: 25
+    }
 };
 
-export default SPACE;
+export default MARGIN;

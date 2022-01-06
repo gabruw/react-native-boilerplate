@@ -1,7 +1,8 @@
 //#region Imports
 
 import Button from 'components/Button';
-import FieldInput from 'containers/FieldInput';
+import ContainerForm from 'components/ContainerForm';
+import AuthenticationFormModule from 'forms/modules/authentication/AuthenticationFormModule';
 import Authentication from 'models/authentication/Authentication';
 import React, { FC, Fragment, useCallback } from 'react';
 import useUserService from 'services/user/useUserService';
@@ -21,8 +22,9 @@ const Content: FC = () => {
 
     return (
         <Fragment>
-            <FieldInput name='authentication.fields.email' label='authentication.labels.email' />
-            <FieldInput name='authentication.fields.password' label='authentication.labels.password' isPassword />
+            <ContainerForm>
+                <AuthenticationFormModule />
+            </ContainerForm>
 
             <Button isLoading={isLoading} onPress={handleSubmit(onSubmit)}>
                 {'commons.buttons.enter'}

@@ -26,10 +26,7 @@ const FieldInput: FC<FieldInputProps> = ({ name, label, icon, mask, isDisabled =
         formState: { errors }
     } = useFormContext();
 
-    const tName = useMemo(() => t(name), [name]);
-    const { field } = useController({ name: tName, control, defaultValue: '' });
-
-    const hasErrors = useMemo((): boolean => Boolean(Object.keys(errors).length), [errors]);
+    const { field } = useController({ name, control, defaultValue: '' });
     const passwordIcon = useMemo((): string => (isTextVisible ? 'eye' : 'eye-slash'), [isTextVisible]);
 
     const handleChange = useCallback(
@@ -45,8 +42,8 @@ const FieldInput: FC<FieldInputProps> = ({ name, label, icon, mask, isDisabled =
             <TextInput
                 mode='outlined'
                 label={t(label)}
-                error={hasErrors}
                 value={field.value}
+                error={errors[name]}
                 disabled={isDisabled}
                 secureTextEntry={isTextVisible}
                 onChangeText={(text) => handleChange(text)}
@@ -58,8 +55,8 @@ const FieldInput: FC<FieldInputProps> = ({ name, label, icon, mask, isDisabled =
                 }
             />
 
-            <HelperText type='error' visible={hasErrors}>
-                {errors[tName]?.message}
+            <HelperText type='error' visible={errors[name]}>
+                {errors[name]?.message}
             </HelperText>
         </Fragment>
     );

@@ -6,10 +6,11 @@ import { StatusBar } from 'react-native';
 
 const SHEET = {
     CONTAINER: {
-        flex: 1
-    },
-    CONTENT: {
+        flex: 1,
         marginTop: Number(StatusBar.currentHeight)
+    },
+    CONTAINER_WITH_HEADER: {
+        flex: 1
     }
 };
 
