@@ -2,6 +2,7 @@
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useCallback } from 'react';
+import { useSnackbarDispatch } from 'storages/redux/hooks/snackbar';
 
 //#endregion
 
@@ -11,6 +12,8 @@ interface AsyncStorageProps {
 }
 
 const useAsyncStorage = (): AsyncStorageProps => {
+    const { setSnackbar } = useSnackbarDispatch();
+
     const getItem = useCallback(async <T,>(key: string): Promise<T | null> => {
         let storageValue: T | null = null;
 
@@ -20,7 +23,7 @@ const useAsyncStorage = (): AsyncStorageProps => {
                 storageValue = JSON.parse(value) as T;
             }
         } catch (e) {
-            console.warn(e);
+            setSnackbar({ text: 'commons.async-storage.errors.get-item' });
         }
 
         return storageValue;
@@ -31,7 +34,7 @@ const useAsyncStorage = (): AsyncStorageProps => {
             const json = JSON.stringify(value);
             await AsyncStorage.setItem(key, json);
         } catch (e) {
-            console.warn(e);
+            setSnackbar({ text: 'commons.async-storage.errors.set-item' });
         }
     }, []);
 

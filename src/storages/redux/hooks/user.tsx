@@ -3,7 +3,7 @@
 import jwtDecode from 'jwt-decode';
 import UserRedux from 'models/storages/redux/slices/UserRedux';
 import User from 'models/user/User';
-import { set } from '../slices/user';
+import { reset, set } from '../slices/user';
 import { useDefaultDispatch, useDefaultSelector } from './default';
 
 //#endregion
@@ -24,9 +24,12 @@ export const useTokenSelector = (): UserRedux => useDefaultSelector<UserRedux>((
 export const useUserDispatch = () => {
     const dispatch = useDefaultDispatch();
 
-    const setUserDispatch = (payload: UserRedux) => dispatch(set(payload));
+    const resetUser = () => dispatch(reset());
+
+    const setUser = (payload: UserRedux) => dispatch(set(payload));
 
     return {
-        setUserDispatch
+        setUser,
+        resetUser
     };
 };

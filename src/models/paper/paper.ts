@@ -5,5 +5,10 @@ declare global {
         interface ThemeFonts {
             bold: ThemeFont;
         }
+
+        interface ThemeColors {
+            success: string;
+            warning: string;
+        }
     }
 }

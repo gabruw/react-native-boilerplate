@@ -8,13 +8,14 @@ import useContainerFormStyles from './styles';
 
 interface ContainerFormProps {
     children: ReactNode;
+    behavior?: 'height' | 'position' | 'padding';
 }
 
-const ContainerForm: FC<ContainerFormProps> = ({ children }) => {
+const ContainerForm: FC<ContainerFormProps> = ({ children, behavior = 'padding' }) => {
     const styles = useContainerFormStyles();
 
     return (
-        <KeyboardAvoidingView style={styles.container} behavior='padding'>
+        <KeyboardAvoidingView style={styles.container} behavior={behavior}>
             {children}
         </KeyboardAvoidingView>
     );

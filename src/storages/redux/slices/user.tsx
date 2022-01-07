@@ -15,11 +15,14 @@ const { actions, reducer } = createSlice({
     initialState,
     reducers: {
         set: (state, action: PayloadAction<UserRedux>) => {
-            state.token = action.payload.token;
+            Object.assign(state, action.payload);
+        },
+        reset: (state) => {
+            Object.assign(state, initialState);
         }
     }
 });
 
-export const { set } = actions;
+export const { set, reset } = actions;
 
 export default reducer;

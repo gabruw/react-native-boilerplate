@@ -13,12 +13,18 @@ import useAuthenticationSchema from 'utils/validators/yup/schemas/useAuthenticat
 //#endregion
 
 const Content: FC = () => {
-    const { handleSubmit } = useFormContext();
+    const { handleSubmit, reset } = useFormContext();
 
-    const { setUserDispatch } = useUserDispatch();
-    const { fetchLogin, isLoading } = useUserService({ setLogin: setUserDispatch });
+    const { setUser } = useUserDispatch();
+    const { fetchLogin, isLoading } = useUserService({ setLogin: setUser });
 
-    const onSubmit = useCallback(async (form: Authentication): Promise<void> => await fetchLogin(form), [fetchLogin]);
+    const onSubmit = useCallback(
+        async (form: Authentication): Promise<void> => {
+            await fetchLogin(form);
+            reset();
+        },
+        [fetchLogin]
+    );
 
     return (
         <Fragment>

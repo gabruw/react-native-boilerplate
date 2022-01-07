@@ -3,6 +3,7 @@
 import AuthenticationLocales from './authentication';
 import CommonsLocales from './commons';
 import YupLocales from './yup';
+
 //#endregion
 
 const ptBr = {

@@ -10,6 +10,8 @@ const paperLightTheme: ReactNativePaper.Theme = {
     dark: false,
     fonts: fontsTheme,
     colors: {
+        success: '#66CF71',
+        warning: '#CFBE66',
         ...DefaultTheme.colors
     }
 };

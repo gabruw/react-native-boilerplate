@@ -19,7 +19,7 @@ interface RequestInterceptorsProps {
 
 const useRequestInterceptors = ({ setRequestState }: RequestInterceptorsProps): RequestInterceptors => {
     const { token } = useTokenSelector();
-    const { setIsLoading } = useRequestState({ setRequestState });
+    const { setIsLoading, setError } = useRequestState({ setRequestState });
 
     const onRequest = useCallback(
         (config: AxiosRequestConfig): AxiosRequestConfig => {
@@ -37,7 +37,9 @@ const useRequestInterceptors = ({ setRequestState }: RequestInterceptorsProps): 
     );
 
     const onRequestError = useCallback((error: AxiosError): Promise<AxiosError> => {
-        setIsLoading(true);
+        setError(error);
+        setIsLoading(false);
+
         return Promise.reject(error);
     }, []);
 

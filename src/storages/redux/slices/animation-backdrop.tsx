@@ -21,8 +21,7 @@ const { actions, reducer } = createSlice({
             state.visibility = !state.visibility;
         },
         set: (state, action: PayloadAction<AnimationBackdropRedux>) => {
-            state.animation = action.payload.animation;
-            state.visibility = action.payload.visibility;
+            Object.assign(state, action.payload);
         }
     }
 });

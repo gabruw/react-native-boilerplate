@@ -1,31 +1,53 @@
 //#region Imports
 
-import React, { FC, useCallback } from 'react';
+import { SnackbarAction } from 'models/components/Snackbar';
+import React, { FC, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Snackbar as PaperSnackbar } from 'react-native-paper';
+import { View } from 'react-native';
+import { Portal, Snackbar as PaperSnackbar } from 'react-native-paper';
 import { useSnackbarDispatch, useSnackbarSelector } from 'storages/redux/hooks/snackbar';
+import CountdownTimerSnackbar from './components/CountdownTimerSnackbar';
+import TextSnackbar from './components/TextSnackbar';
+import useSnackbarStyles from './styles';
 
 //#endregion
 
 const Snackbar: FC = () => {
     const { t } = useTranslation();
+    const styles = useSnackbarStyles();
 
     const { toggleSnackbar } = useSnackbarDispatch();
-    const { isVisible, text, action } = useSnackbarSelector();
+    const { isVisible, duration, type, action } = useSnackbarSelector();
+
+    const label = useMemo((): string => t(action.label || 'commons.snackbar.default.action-label'), [action]);
+    const partialAction = useMemo(
+        (): SnackbarAction | undefined => action.onPress && { ...action, label, onPress: handleActionPress },
+        [action]
+    );
 
     const handleActionPress = useCallback(() => {
-        action?.onPress && action.onPress();
+        action.onPress && action.onPress();
         toggleSnackbar();
-    }, [action, toggleSnackbar]);
+    }, [action]);
 
     return (
-        <PaperSnackbar
-            visible={isVisible}
-            onDismiss={() => !action?.onPress && toggleSnackbar()}
-            action={action && { ...action, onPress: handleActionPress }}
-        >
-            {t(text)}
-        </PaperSnackbar>
+        <Portal>
+            <PaperSnackbar
+                visible={isVisible}
+                duration={duration}
+                style={styles[type]}
+                action={partialAction}
+                onDismiss={() => toggleSnackbar()}
+            >
+                <View style={styles.content}>
+                    <View style={styles.textContainer}>
+                        <TextSnackbar />
+                    </View>
+
+                    {!action.onPress && <CountdownTimerSnackbar />}
+                </View>
+            </PaperSnackbar>
+        </Portal>
     );
 };
 

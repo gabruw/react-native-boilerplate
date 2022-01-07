@@ -1,6 +1,7 @@
 //#region Imports
 
-import SnackbarRedux from 'models/storages/redux/slices/SnackbarRedux';
+import SnackbarRedux, { SetSnackbarRedux } from 'models/storages/redux/slices/SnackbarRedux';
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { set, toggle } from '../slices/snackbar';
 import { useDefaultSelector } from './default';
@@ -11,10 +12,14 @@ export const useSnackbarSelector = (): SnackbarRedux => useDefaultSelector<Snack
 
 export const useSnackbarDispatch = () => {
     const dispatch = useDispatch();
+    const { t } = useTranslation();
 
     const toggleSnackbar = () => dispatch(toggle());
 
-    const setSnackbar = (payload: SnackbarRedux) => dispatch(set(payload));
+    const setSnackbar = (payload: SetSnackbarRedux) => {
+        payload.text = t(payload.text);
+        return dispatch(set(payload));
+    };
 
     return {
         toggleSnackbar,
