@@ -1,6 +1,7 @@
 //#region Imports
 
 import FieldInput from 'containers/FieldInput';
+import FieldPicker from 'containers/FieldPicker';
 import React, { FC, Fragment } from 'react';
 import AUTHENTICATION_FIELDS from 'utils/constants/fields/authentication.json';
 import maxLength from 'utils/validators/masks/maxLength';
@@ -21,6 +22,8 @@ const AuthenticationFormModule: FC = () => (
             name={AUTHENTICATION_FIELDS.PASSWORD}
             label='authentication.labels.password'
         />
+
+        <FieldPicker name='popo' label='sabao' options={[{ text: 'pira', value: 'aa' }]} />
     </Fragment>
 );
 

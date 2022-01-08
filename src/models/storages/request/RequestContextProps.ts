@@ -9,7 +9,7 @@ export interface StateSuccessProps {
 
 export interface StateErrorProps {
     status?: number;
-    errors: Array<string>;
+    errors: string[];
 }
 
 export interface RequestContextStateProps extends StateSuccessProps, StateErrorProps {

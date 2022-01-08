@@ -17,13 +17,13 @@ type IntegratedButtonProps = ComponentProps<typeof PaperButton> & ButtonCustomPr
 
 type ButtonProps = Omit<IntegratedButtonProps, 'disabled' | 'loading'>;
 
-const Button: FC<ButtonProps> = ({ children, mode = 'contained', isDisabled = false, isLoading = false, ...props }) => {
+const Button: FC<ButtonProps> = ({ children, mode = 'contained', isDisabled = false, isLoading = false, ...rest }) => {
     const { t } = useTranslation();
 
     return (
         <PaperButton
             data-testid={TEST_ID.button}
-            {...props}
+            {...rest}
             mode={mode}
             loading={isLoading}
             disabled={isDisabled || isLoading}

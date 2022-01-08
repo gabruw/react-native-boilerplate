@@ -33,7 +33,7 @@ const useRequestState = ({ setRequestState }: RequestStateProps): RequestState =
         ({ response, message }: AxiosError): void => {
             const requestError: StateErrorProps = {
                 status: response?.status,
-                errors: Array.isArray(response?.data?.errors) ? response?.data.errors : Array(message)
+                errors: Array.isArray(response?.data?.errors) ? response?.data.errors : [message]
             };
 
             if (requestError.errors.length) {

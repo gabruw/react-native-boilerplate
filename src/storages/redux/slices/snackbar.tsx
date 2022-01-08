@@ -27,7 +27,7 @@ const { actions, reducer } = createSlice({
             state.action = action.payload.action || initialState.action;
             state.isVisible = action.payload.isVisible || !state.isVisible;
             state.duration = action.payload.duration || initialState.duration;
-            state.text = Array.isArray(action.payload.text) ? action.payload.text : Array(action.payload.text);
+            state.text = Array.isArray(action.payload.text) ? action.payload.text : [action.payload.text];
         }
     }
 });

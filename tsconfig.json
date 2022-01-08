@@ -1,15 +1,16 @@
 {
     "extends": "expo/tsconfig.base",
-    "include": ["./src/**/*.tsx", "./src/**/*.ts"],
+    "include": ["./src/**/*.ts", "./src/**/*.tsx"],
     "exclude": [
         "node_modules",
         "**/*.spec.ts",
         "**/*.test.ts",
         "**/*.spec.tsx",
         "**/*.test.tsx",
-        "jest.config.js",
+        "jest.config.ts",
         "babel.config.js",
-        "metro.config.js"
+        "metro.config.js",
+        "stryker.conf.json"
     ],
     "compilerOptions": {
         "noEmit": true,

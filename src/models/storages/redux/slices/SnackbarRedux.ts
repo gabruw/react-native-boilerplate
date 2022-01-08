@@ -7,18 +7,18 @@ import { SnackbarAction } from 'models/components/Snackbar';
 type SnackbarType = 'error' | 'warning' | 'success';
 
 export interface SetSnackbarRedux {
+    text: string[];
     duration?: number;
     type?: SnackbarType;
     isVisible?: boolean;
-    text: Array<string>;
     action?: SnackbarAction;
 }
 
 interface SnackbarRedux {
+    text: string[];
     duration: number;
     type: SnackbarType;
     isVisible: boolean;
-    text: Array<string>;
     action: SnackbarAction;
 }
 

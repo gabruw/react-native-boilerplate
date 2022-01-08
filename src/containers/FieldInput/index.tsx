@@ -3,7 +3,7 @@
 import React, { FC, Fragment, useCallback, useMemo, useState } from 'react';
 import { useController } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { HelperText, TextInput } from 'react-native-paper';
+import { HelperText, TextInput, useTheme } from 'react-native-paper';
 import useFormContext from 'storages/form';
 
 //#endregion
@@ -18,7 +18,9 @@ interface FieldInputProps {
 }
 
 const FieldInput: FC<FieldInputProps> = ({ name, label, icon, mask, isDisabled = false, isPassword = false }) => {
+    const { colors } = useTheme();
     const { t } = useTranslation();
+
     const [isTextVisible, setIsTextVisible] = useState<boolean>(isPassword);
 
     const {
@@ -27,7 +29,9 @@ const FieldInput: FC<FieldInputProps> = ({ name, label, icon, mask, isDisabled =
     } = useFormContext();
 
     const { field } = useController({ name, control, defaultValue: '' });
+
     const passwordIcon = useMemo((): string => (isTextVisible ? 'eye' : 'eye-slash'), [isTextVisible]);
+    const iconColor = useMemo((): string => (isDisabled ? colors.disabled : colors.primary), [isDisabled]);
 
     const handleChange = useCallback(
         (text: string): void => {
@@ -47,10 +51,15 @@ const FieldInput: FC<FieldInputProps> = ({ name, label, icon, mask, isDisabled =
                 disabled={isDisabled}
                 secureTextEntry={isTextVisible}
                 onChangeText={(text) => handleChange(text)}
-                left={icon && <TextInput.Icon name={icon} />}
+                left={icon && <TextInput.Icon name={icon} color={iconColor} disabled={isDisabled} />}
                 right={
                     isPassword && (
-                        <TextInput.Icon name={passwordIcon} onPress={() => setIsTextVisible((prev) => !prev)} />
+                        <TextInput.Icon
+                            color={iconColor}
+                            name={passwordIcon}
+                            disabled={isDisabled}
+                            onPress={() => setIsTextVisible((prev) => !prev)}
+                        />
                     )
                 }
             />
