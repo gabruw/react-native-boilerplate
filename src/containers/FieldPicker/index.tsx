@@ -2,7 +2,7 @@
 
 import { Picker, PickerProps } from '@react-native-picker/picker';
 import useAnimateTextStyles from 'hooks/styles/useAnimatedTextStyles';
-import { FieldPickerOptions } from 'models/components/FieldPicker';
+import { FieldPickerOptions } from 'models/containers/FieldPicker';
 import React, { FC, useEffect, useMemo, useState } from 'react';
 import { useController } from 'react-hook-form';
 import { Animated, View } from 'react-native';
@@ -12,7 +12,7 @@ import useFieldPickerStyles from './styles';
 
 //#endregion
 
-interface FieldPickerProps extends PickerProps {
+interface FieldPickerProps extends Omit<PickerProps, 'enabled'> {
     name: string;
     label: string;
     icon?: string;

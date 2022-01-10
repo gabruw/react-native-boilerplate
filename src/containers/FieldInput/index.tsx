@@ -1,5 +1,6 @@
 //#region Imports
 
+import FieldInputProps, { TextInputProps } from 'models/containers/FieldInput';
 import React, { FC, Fragment, useCallback, useMemo, useState } from 'react';
 import { useController } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -8,16 +9,17 @@ import useFormContext from 'storages/form';
 
 //#endregion
 
-interface FieldInputProps {
-    name: string;
-    label: string;
-    icon?: string;
-    isDisabled?: boolean;
-    isPassword?: boolean;
-    mask?: (text: string) => string;
-}
-
-const FieldInput: FC<FieldInputProps> = ({ name, label, icon, mask, isDisabled = false, isPassword = false }) => {
+const FieldInput: FC<FieldInputProps & TextInputProps> = ({
+    name,
+    mask,
+    left,
+    label,
+    right,
+    affix,
+    isDisabled = false,
+    isPassword = false,
+    ...rest
+}) => {
     const { colors } = useTheme();
     const { t } = useTranslation();
 
@@ -51,17 +53,22 @@ const FieldInput: FC<FieldInputProps> = ({ name, label, icon, mask, isDisabled =
                 disabled={isDisabled}
                 secureTextEntry={isTextVisible}
                 onChangeText={(text) => handleChange(text)}
-                left={icon && <TextInput.Icon name={icon} color={iconColor} disabled={isDisabled} />}
+                left={left && <TextInput.Icon name={left} color={iconColor} disabled={isDisabled} />}
                 right={
-                    isPassword && (
-                        <TextInput.Icon
-                            color={iconColor}
-                            name={passwordIcon}
-                            disabled={isDisabled}
-                            onPress={() => setIsTextVisible((prev) => !prev)}
-                        />
+                    affix ? (
+                        <TextInput.Affix text={String(affix)} />
+                    ) : (
+                        (right || isPassword) && (
+                            <TextInput.Icon
+                                color={iconColor}
+                                disabled={isDisabled}
+                                name={right || passwordIcon}
+                                onPress={() => setIsTextVisible((prev) => !prev)}
+                            />
+                        )
                     )
                 }
+                {...rest}
             />
 
             <HelperText type='error' visible={errors[name]}>
