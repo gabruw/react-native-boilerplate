@@ -1,7 +1,6 @@
 //#region Imports
 
 import { createStackNavigator } from '@react-navigation/stack';
-import AppbarHeader from 'components/AppbarHeader';
 import StackNavigationRoutesProps from 'models/router/StackNavigationRoutesProps';
 import StackNavigatorProps from 'models/router/StackNavigatorProps';
 import React, { FC } from 'react';
@@ -14,10 +13,7 @@ import TabNavigator from '../TabNavigator';
 const { Navigator, Screen } = createStackNavigator<StackNavigationRoutesProps>();
 
 const StackNavigator: FC = () => (
-    <Navigator
-        initialRouteName={ROUTE_NAMES.STACK.AUTHENTICATION}
-        screenOptions={{ header: (props) => <AppbarHeader {...props} /> }}
-    >
+    <Navigator initialRouteName={ROUTE_NAMES.STACK.AUTHENTICATION}>
         <Screen name={ROUTE_NAMES.TABS.THIS} component={TabNavigator} />
 
         {STACK_ROUTES.map(({ name, options, component }: StackNavigatorProps, index) => (
