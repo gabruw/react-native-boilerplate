@@ -3,10 +3,10 @@ module.exports = function (api) {
 
     return {
         presets: [
-            ['@babel/preset-env', { targets: { node: 'current' } }],
             'babel-preset-expo',
+            '@babel/preset-typescript',
             'module:metro-react-native-babel-preset',
-            '@babel/preset-typescript'
+            ['@babel/preset-env', { targets: { node: 'current' } }]
         ],
         plugins: [
             [

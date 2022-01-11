@@ -2,7 +2,9 @@
     "testRunner": "jest",
     "coverageAnalysis": "off",
     "checkers": ["typescript"],
+    "allowConsoleColors": true,
     "tsconfigFile": "tsconfig.json",
+    "commandRunner": { "command": "yarn test" },
     "reporters": ["progress", "clear-text", "html"],
     "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
     "jest": {

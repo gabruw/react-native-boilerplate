@@ -7,8 +7,8 @@ import TestProviders from './components/TestProviders';
 
 //#endregion
 
-jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage);
 jest.mock('../../../node_modules/react-native/Libraries/Animated/NativeAnimatedHelper.js');
+jest.mock('@react-native-async-storage/async-storage', (): AsyncStorage => mockAsyncStorage);
 
 const renderWithProviders = (ui: ReactElement, options?: Omit<RenderOptions, 'wrapper'>) =>
     render(ui, { wrapper: TestProviders, ...options });
