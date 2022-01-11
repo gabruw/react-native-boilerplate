@@ -23,7 +23,7 @@ const useAsyncStorage = (): AsyncStorageProps => {
                 storageValue = JSON.parse(value) as T;
             }
         } catch (e) {
-            setSnackbar({ text: 'commons.async-storage.errors.get-item' });
+            setSnackbar({ text: ['commons.async-storage.errors.get-item'] });
         }
 
         return storageValue;
@@ -34,7 +34,7 @@ const useAsyncStorage = (): AsyncStorageProps => {
             const json = JSON.stringify(value);
             await AsyncStorage.setItem(key, json);
         } catch (e) {
-            setSnackbar({ text: 'commons.async-storage.errors.set-item' });
+            setSnackbar({ text: ['commons.async-storage.errors.set-item'] });
         }
     }, []);
 

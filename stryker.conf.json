@@ -8,6 +8,6 @@
     "jest": {
         "projectType": "custom",
         "enableFindRelatedTests": true,
-        "configFile": "./jest.config.ts"
+        "configFile": "./jest.config.json"
     }
 }

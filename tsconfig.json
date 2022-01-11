@@ -7,9 +7,8 @@
         "**/*.test.ts",
         "**/*.spec.tsx",
         "**/*.test.tsx",
-        "jest.config.ts",
         "babel.config.js",
-        "metro.config.js",
+        "jest.config.json",
         "stryker.conf.json"
     ],
     "compilerOptions": {

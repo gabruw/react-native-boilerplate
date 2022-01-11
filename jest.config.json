@@ -1,0 +1,14 @@
+{
+    "clearMocks": true,
+    "maxWorkers": "50%",
+    "preset": "jest-expo",
+    "collectCoverage": true,
+    "coverageProvider": "v8",
+    "testEnvironment": "node",
+    "cacheDirectory": ".jest/cache",
+    "coverageDirectory": ".jest/coverage",
+    "moduleFileExtensions": ["ts", "tsx", "js"],
+    "testPathIgnorePatterns": ["<rootDir>/node_modules/"],
+    "coveragePathIgnorePatterns": ["<rootDir>/node_modules/"],
+    "setupFilesAfterEnv": ["@testing-library/jest-native/extend-expect"]
+}

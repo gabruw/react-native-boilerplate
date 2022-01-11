@@ -20,4 +20,5 @@ web-build/
 .jest
 
 # Stryker
+reports
 .stryker-tmp
