@@ -98,11 +98,5 @@
     },
     "resolutions": {
         "react-native/@jest/create-cache-key-function": "^27.4.2"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "yarn lint",
-            "pre-push": ""
-        }
     }
 }
