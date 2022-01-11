@@ -15,7 +15,7 @@ export const NetInfoContextProvider: FC<NetInfoContextProps> = ({ children }) =>
 
     const unsubscribe = NetInfo.addEventListener((state) => {
         if (!state.isConnected) {
-            console.log('Not connected D:');
+            modalRef.current?.show();
         }
     });
 

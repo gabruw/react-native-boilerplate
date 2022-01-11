@@ -1,0 +1,7 @@
+{
+    "cache-loader": {
+        "errors": {
+            "load-cache": "Erro ao carregar os dados da aplicação. Por favor reinicie a aplicação."
+        }
+    }
+}
