@@ -1,4 +1,11 @@
-{
-  "ignored": false,
-  "inferredParser": "json"
-}
+# Config/Tmp/Cache
+.expo
+.expo-shared
+.husky
+.jest
+.stryker-tmp
+.vscode
+
+# Source/Reports
+reports
+node_modules
