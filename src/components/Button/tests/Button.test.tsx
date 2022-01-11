@@ -1,7 +1,7 @@
 //#region Imports
 
-import { fireEvent, render } from '@testing-library/react-native';
 import React from 'react';
+import { fireEvent, render } from 'utils/test';
 import Button from '../';
 import TEST_ID from './id.json';
 
@@ -33,6 +33,7 @@ describe('Button Test', () => {
         const button = getByTestId(TEST_ID.button);
         fireEvent.press(button);
 
+        expect(button).toBeDisabled();
         expect(onPressMock).toHaveBeenCalledTimes(0);
     });
 });

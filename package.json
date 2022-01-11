@@ -8,6 +8,7 @@
         "eject": "expo eject",
         "start": "expo start",
         "prepare": "husky install",
+        "stryker": "npx stryker run",
         "format": "prettier --write .",
         "check-format": "prettier --check .",
         "check-types": "tsc --pretty --noEmit",

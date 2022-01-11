@@ -1,9 +1,9 @@
 //#region Imports
 
 import React, { FC, ReactNode } from 'react';
-import { Keyboard, TouchableWithoutFeedback } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { Keyboard, ScrollView, TouchableWithoutFeedback } from 'react-native';
 import useContainerPageStyles from './styles';
+import TEST_ID from './tests/id.json';
 
 //#endregion
 
@@ -12,11 +12,11 @@ interface ContainerPageProps {
     hasHeader?: boolean;
 }
 
-const ContainerPage: FC<ContainerPageProps> = ({ children, hasHeader }) => {
+const ContainerPage: FC<ContainerPageProps> = ({ children, hasHeader = false }) => {
     const styles = useContainerPageStyles({ hasHeader });
 
     return (
-        <ScrollView contentContainerStyle={styles.container}>
+        <ScrollView testID={TEST_ID.container} contentContainerStyle={styles.container}>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>{children}</TouchableWithoutFeedback>
         </ScrollView>
     );

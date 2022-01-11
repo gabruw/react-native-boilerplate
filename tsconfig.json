@@ -1,16 +1,7 @@
 {
     "extends": "expo/tsconfig.base",
     "include": ["./src/**/*.ts", "./src/**/*.tsx"],
-    "exclude": [
-        "node_modules",
-        "**/*.spec.ts",
-        "**/*.test.ts",
-        "**/*.spec.tsx",
-        "**/*.test.tsx",
-        "babel.config.js",
-        "jest.config.json",
-        "stryker.conf.json"
-    ],
+    "exclude": ["node_modules", "babel.config.js", "jest.config.json", "stryker.conf.json"],
     "compilerOptions": {
         "noEmit": true,
         "pretty": true,
