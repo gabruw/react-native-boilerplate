@@ -34,8 +34,8 @@ const useUserService = ({ setLogin, setToken }: UserServiceProps): UserService =
     const { token } = useTokenSelector();
 
     const fetchLogin = useCallback(
-        async (data: Authentication) =>
-            await axios.post<UserRedux>(LOGIN, data).then(({ data }) => {
+        async (form: Authentication) =>
+            await axios.post<UserRedux>(LOGIN, form).then(({ data }) => {
                 if (setLogin) {
                     setLogin(data);
                     navigate(ROUTE_NAMES.TABS.THIS, { screen: ROUTE_NAMES.TABS.STOCK });
