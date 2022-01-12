@@ -1,7 +1,7 @@
 //#region Imports
 
-import maxLength from './maxLength';
-import onlyNumber from './onlyNumber';
+import maxLength from '../maxLength';
+import onlyNumber from '../onlyNumber';
 
 //#endregion
 
