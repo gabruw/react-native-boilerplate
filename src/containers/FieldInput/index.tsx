@@ -1,11 +1,13 @@
 //#region Imports
 
 import FieldInputProps, { TextInputProps } from 'models/containers/FieldInput';
-import React, { FC, Fragment, useCallback, useMemo, useState } from 'react';
+import React, { FC, Fragment, useCallback, useState } from 'react';
 import { useController } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { HelperText, TextInput, useTheme } from 'react-native-paper';
-import useFormContext from 'storages/form';
+import { NativeSyntheticEvent, TextInputFocusEventData } from 'react-native';
+import { HelperText, TextInput } from 'react-native-paper';
+import useFieldInputLeft from './hooks/useFieldInputLeft';
+import useFieldInputRight from './hooks/useFieldInputRight';
 
 //#endregion
 
@@ -16,24 +18,33 @@ const FieldInput: FC<FieldInputProps & TextInputProps> = ({
     label,
     right,
     affix,
+    onBlur,
+    onFocus,
     isDisabled = false,
     isPassword = false,
     ...rest
 }) => {
-    const { colors } = useTheme();
     const { t } = useTranslation();
 
+    const [isFocused, setIsFocused] = useState<boolean>(false);
     const [isTextVisible, setIsTextVisible] = useState<boolean>(isPassword);
 
     const {
-        control,
-        formState: { errors }
-    } = useFormContext();
+        field,
+        fieldState: { error }
+    } = useController({ name, defaultValue: '' });
 
-    const { field } = useController({ name, control, defaultValue: '' });
-
-    const passwordIcon = useMemo((): string => (isTextVisible ? 'eye' : 'eye-slash'), [isTextVisible]);
-    const iconColor = useMemo((): string => (isDisabled ? colors.disabled : colors.primary), [isDisabled]);
+    const leftAdornment = useFieldInputLeft({ left, error, isFocused, isDisabled });
+    const rightAdornment = useFieldInputRight({
+        affix,
+        right,
+        error,
+        isFocused,
+        isPassword,
+        isDisabled,
+        isTextVisible,
+        setIsTextVisible
+    });
 
     const handleChange = useCallback(
         (text: string): void => {
@@ -43,36 +54,41 @@ const FieldInput: FC<FieldInputProps & TextInputProps> = ({
         [mask, field]
     );
 
+    const handleFocus = useCallback(
+        (event: NativeSyntheticEvent<TextInputFocusEventData>): void => {
+            setIsFocused(true);
+            onFocus && onFocus(event);
+        },
+        [onFocus]
+    );
+
+    const handleBlur = useCallback(
+        (event: NativeSyntheticEvent<TextInputFocusEventData>): void => {
+            setIsFocused(false);
+            onBlur && onBlur(event);
+        },
+        [onBlur]
+    );
+
     return (
         <Fragment>
             <TextInput
                 mode='outlined'
                 label={t(label)}
                 value={field.value}
-                error={errors[name]}
+                left={leftAdornment}
                 disabled={isDisabled}
+                right={rightAdornment}
+                error={Boolean(error)}
+                onBlur={(e) => handleBlur(e)}
+                onFocus={(e) => handleFocus(e)}
                 secureTextEntry={isTextVisible}
                 onChangeText={(text) => handleChange(text)}
-                left={left && <TextInput.Icon name={left} color={iconColor} disabled={isDisabled} />}
-                right={
-                    affix ? (
-                        <TextInput.Affix text={String(affix)} />
-                    ) : (
-                        (right || isPassword) && (
-                            <TextInput.Icon
-                                color={iconColor}
-                                disabled={isDisabled}
-                                name={right || passwordIcon}
-                                onPress={() => setIsTextVisible((prev) => !prev)}
-                            />
-                        )
-                    )
-                }
                 {...rest}
             />
 
-            <HelperText type='error' visible={errors[name]}>
-                {errors[name]?.message}
+            <HelperText type='error' visible={Boolean(error)}>
+                {error?.message}
             </HelperText>
         </Fragment>
     );

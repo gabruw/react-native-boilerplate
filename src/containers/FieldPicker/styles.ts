@@ -7,32 +7,31 @@ import ALIGN from 'utils/styles/align';
 //#endregion
 
 interface FieldPickerStylesProps {
-    hasValue: boolean;
+    fieldColor: string;
     isFocused: boolean;
     isLoading: boolean;
-    isDisabled: boolean;
 }
 
-const useFieldPickerStyles = ({ hasValue, isFocused, isLoading, isDisabled }: FieldPickerStylesProps) => {
+const useFieldPickerStyles = ({ fieldColor, isFocused, isLoading }: FieldPickerStylesProps) => {
     const { colors } = useTheme();
 
     return StyleSheet.create({
         pickerContainer: {
             borderRadius: 4,
             borderStyle: 'solid',
-            borderWidth: isFocused ? 2 : 1,
-            borderColor: isFocused ? colors.primary : colors.backdrop,
+            borderColor: fieldColor,
+            borderWidth: isFocused ? 2 : 1.5,
             ...ALIGN('center', 'between')
         },
         picker: {
             height: 58,
-            marginLeft: 6,
-            color: hasValue ? (isFocused ? colors.background : colors.backdrop) : colors.background,
+            color: fieldColor,
+            backgroundColor: colors.background,
             width: isLoading ? Dimensions.get('screen').width - 90 : '100%',
             ...ALIGN('center', 'center')
         },
         item: {
-            color: isDisabled || isLoading ? colors.disabled : colors.backdrop
+            color: fieldColor
         },
         loader: {
             marginRight: 8,

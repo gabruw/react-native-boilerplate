@@ -5,6 +5,6 @@ import { StackNavigationProps } from 'models/router/StackNavigatorProps';
 
 //#endregion
 
-const useStackNavigation = () => useNavigation<StackNavigationProps>();
+const useStackNavigation = (): StackNavigationProps => useNavigation<StackNavigationProps>();
 
 export default useStackNavigation;

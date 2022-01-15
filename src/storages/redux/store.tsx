@@ -1,8 +1,10 @@
 //#region Imports
 
+import { STORAGE_KEY } from '@env';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { combineReducers, configureStore, EnhancedStore, Reducer } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
+import { encryptTransform } from 'redux-persist-transform-encrypt';
 import { Persistor } from 'redux-persist/es/types';
 import thunk from 'redux-thunk';
 import REDUCERS from 'utils/constants/redux/reducers.json';
@@ -24,7 +26,8 @@ const persistedReducer: Reducer = persistReducer(
     {
         key: 'root',
         storage: AsyncStorage,
-        whitelist: [REDUCERS.USER, REDUCERS.THEME]
+        whitelist: [REDUCERS.USER, REDUCERS.THEME],
+        transforms: [encryptTransform({ secretKey: STORAGE_KEY })]
     },
     reducers
 );

@@ -2,18 +2,22 @@
 
 import Button from 'components/Button';
 import ContainerForm from 'components/ContainerForm';
+import FieldPicker from 'containers/FieldPicker';
 import AuthenticationFormModule from 'forms/modules/authentication/AuthenticationFormModule';
+import useHookForms from 'hooks/form/useHookForms';
 import Authentication from 'models/authentication/Authentication';
-import React, { FC, Fragment, useCallback } from 'react';
+import React, { FC, useCallback } from 'react';
+import { FormProvider } from 'react-hook-form';
 import useUserService from 'services/user/useUserService';
-import useFormContext, { FormContextProvider } from 'storages/form';
 import { useUserDispatch } from 'storages/redux/hooks/user';
 import useAuthenticationSchema from 'utils/validators/yup/schemas/useAuthenticationSchema';
+import Profile from 'views/profile';
 
 //#endregion
 
-const Content: FC = () => {
-    const { handleSubmit, reset } = useFormContext();
+const AuthenticationForm: FC = () => {
+    const schema = useAuthenticationSchema();
+    const [form, { handleSubmit, reset }] = useHookForms<Authentication>({ schema });
 
     const { setUser } = useUserDispatch();
     const { fetchLogin, isLoading } = useUserService({ setLogin: setUser });
@@ -27,25 +31,18 @@ const Content: FC = () => {
     );
 
     return (
-        <Fragment>
+        <FormProvider {...form}>
             <ContainerForm>
+                <FieldPicker name='efe' label='Bring it back' options={[{ text: 'f', value: 1 }]} />
                 <AuthenticationFormModule />
             </ContainerForm>
+
+            <Profile />
 
             <Button isLoading={isLoading} onPress={handleSubmit(onSubmit)}>
                 {'commons.buttons.enter'}
             </Button>
-        </Fragment>
-    );
-};
-
-const AuthenticationForm: FC = () => {
-    const authenticationSchema = useAuthenticationSchema();
-
-    return (
-        <FormContextProvider schema={authenticationSchema}>
-            <Content />
-        </FormContextProvider>
+        </FormProvider>
     );
 };
 

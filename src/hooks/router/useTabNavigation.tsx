@@ -5,6 +5,6 @@ import { TabNavigationProps } from 'models/router/TabNavigatorProps';
 
 //#endregion
 
-const useTabNavigation = () => useNavigation<TabNavigationProps>();
+const useTabNavigation = (): TabNavigationProps => useNavigation<TabNavigationProps>();
 
 export default useTabNavigation;

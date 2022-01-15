@@ -2,12 +2,12 @@
 
 import { Picker, PickerProps } from '@react-native-picker/picker';
 import useAnimateTextStyles from 'hooks/styles/useAnimatedTextStyles';
+import useFieldColor from 'hooks/styles/useFieldIconColor';
 import { FieldPickerOptions } from 'models/containers/FieldPicker';
-import React, { FC, useEffect, useMemo, useState } from 'react';
+import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { useController } from 'react-hook-form';
-import { Animated, View } from 'react-native';
-import { ActivityIndicator, HelperText, useTheme } from 'react-native-paper';
-import useFormContext from 'storages/form';
+import { Animated, NativeSyntheticEvent, TargetedEvent, View } from 'react-native';
+import { ActivityIndicator, HelperText } from 'react-native-paper';
 import useFieldPickerStyles from './styles';
 
 //#endregion
@@ -24,33 +24,25 @@ interface FieldPickerProps extends Omit<PickerProps, 'enabled'> {
 const FieldPicker: FC<FieldPickerProps> = ({
     name,
     label,
+    onBlur,
+    onFocus,
     options = [],
     isLoading = false,
     isDisabled = false,
     ...rest
 }) => {
-    const { colors } = useTheme();
     const [isFocused, setIsFocused] = useState<boolean>(false);
 
     const {
-        control,
-        formState: { errors }
-    } = useFormContext();
+        field,
+        fieldState: { error }
+    } = useController({ name });
 
-    const { field } = useController({ name, control, defaultValue: undefined });
+    const fieldColor = useFieldColor({ error, isFocused, isLoading, isDisabled });
+    const styles = useFieldPickerStyles({ fieldColor, isFocused, isLoading });
 
-    let animatedIsFocused = useMemo(() => new Animated.Value(0), []);
-    const dropdownIconColor = useMemo(
-        () => (!isFocused ? colors.backdrop : isLoading ? colors.background : colors.primary),
-        [isFocused, isLoading, colors]
-    );
-
-    const animateTextStyles = useAnimateTextStyles({ isFocused, animatedIsFocused });
-    const styles = useFieldPickerStyles({ isFocused, isLoading, isDisabled, hasValue: Boolean(field.value) });
-
-    useEffect(() => {
-        animatedIsFocused = new Animated.Value(field.value ? 1 : 0);
-    }, []);
+    const animatedIsFocused = useMemo(() => new Animated.Value(field.value ? 1 : 0), []);
+    const animateTextStyles = useAnimateTextStyles({ error, isFocused, animatedIsFocused });
 
     useEffect(() => {
         Animated.timing(animatedIsFocused, {
@@ -59,6 +51,22 @@ const FieldPicker: FC<FieldPickerProps> = ({
             toValue: isFocused || field.value ? 1 : 0
         }).start();
     }, [isFocused, field]);
+
+    const handleFocus = useCallback(
+        (event: NativeSyntheticEvent<TargetedEvent>) => {
+            setIsFocused(true);
+            onFocus && onFocus(event);
+        },
+        [onFocus]
+    );
+
+    const handleBlur = useCallback(
+        (event: NativeSyntheticEvent<TargetedEvent>): void => {
+            setIsFocused(false);
+            onBlur && onBlur(event);
+        },
+        [onBlur]
+    );
 
     return (
         <View>
@@ -69,15 +77,14 @@ const FieldPicker: FC<FieldPickerProps> = ({
                     mode='dialog'
                     style={styles.picker}
                     selectedValue={field.value}
-                    onFocus={() => setIsFocused(true)}
-                    onBlur={() => setIsFocused(false)}
+                    onBlur={(e) => handleBlur(e)}
+                    onFocus={(e) => handleFocus(e)}
+                    dropdownIconColor={fieldColor}
                     enabled={!(isDisabled || isLoading)}
-                    dropdownIconColor={dropdownIconColor}
-                    dropdownIconRippleColor={colors.primary}
                     onValueChange={(itemValue) => field.onChange(itemValue)}
                     {...rest}
                 >
-                    <Picker.Item label={label} value={undefined} />
+                    <Picker.Item />
 
                     {options.map(({ text, value }, index) => (
                         <Picker.Item key={index} style={styles.item} label={text} value={value} />
@@ -87,8 +94,8 @@ const FieldPicker: FC<FieldPickerProps> = ({
                 {isLoading && <ActivityIndicator size='small' style={styles.loader} />}
             </View>
 
-            <HelperText type='error' visible={errors[name]}>
-                {errors[name]?.message}
+            <HelperText type='error' visible={Boolean(error)}>
+                {error?.message}
             </HelperText>
         </View>
     );
