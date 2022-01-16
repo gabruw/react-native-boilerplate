@@ -20,6 +20,7 @@ describe('Button Test', () => {
         const button = getByTestId(TEST_ID.button);
         fireEvent.press(button);
 
+        expect(button).toBeDisabled();
         expect(onPressMock).toHaveBeenCalledTimes(0);
     });
 

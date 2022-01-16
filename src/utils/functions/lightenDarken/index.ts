@@ -11,7 +11,7 @@ const lightenDarken = (percent: number, colorA: string, colorB: string | boolean
     let r, g, b, P, f, t, h;
     let a: string | number | boolean = typeof colorB === 'string';
 
-    if (percent < -1 || percent > 1 || (colorA[0] != 'r' && colorA[0] != '#') || (colorB && !a)) {
+    if (percent < -1 || percent > 1 || (colorA[0] !== 'r' && colorA[0] !== '#') || (colorB && !a)) {
         return '#FFFFFF';
     }
 
