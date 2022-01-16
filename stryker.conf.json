@@ -11,5 +11,11 @@
         "projectType": "custom",
         "enableFindRelatedTests": true,
         "configFile": "./jest.config.json"
-    }
+    },
+    "mutate": [
+        "./src/components/*/index.tsx",
+        "./src/containers/*/index.tsx",
+        "./src/utils/functions/*/index.ts",
+        "./src/utils/validators/masks/*/index.ts"
+    ]
 }

@@ -11,6 +11,7 @@
     "moduleDirectories": ["node_modules", "src"],
     "setupFilesAfterEnv": ["@testing-library/jest-native/extend-expect"],
     "testPathIgnorePatterns": [
+        "<rootDir>/.jest/",
         "<rootDir>/src/hooks/",
         "<rootDir>/src/views/",
         "<rootDir>/src/forms/",
@@ -22,6 +23,7 @@
         "<rootDir>/src/storages/",
         "<rootDir>/src/services/",
         "<rootDir>/src/index.tsx",
+        "<rootDir>/.stryker-tmp/",
         "<rootDir>/src/utils/test/",
         "<rootDir>/src/utils/cache/",
         "<rootDir>/src/utils/styles/",
@@ -32,6 +34,7 @@
         "<rootDir>/src/components/CacheLoader/"
     ],
     "modulePathIgnorePatterns": [
+        "<rootDir>/.jest/",
         "<rootDir>/src/hooks/",
         "<rootDir>/src/views/",
         "<rootDir>/src/forms/",
@@ -42,16 +45,18 @@
         "<rootDir>/src/storages/",
         "<rootDir>/src/services/",
         "<rootDir>/src/index.tsx",
+        "<rootDir>/.stryker-tmp/",
         "<rootDir>/src/utils/test/",
         "<rootDir>/src/utils/cache/",
         "<rootDir>/src/utils/styles/",
         "<rootDir>/src/utils/themes/",
         "<rootDir>/src/utils/locales/",
         "<rootDir>/src/utils/constants/",
-        "<rootDir>/src/utils/validators/",
+        "<rootDir>/src/utils/validators/yup",
         "<rootDir>/src/components/CacheLoader/"
     ],
     "coveragePathIgnorePatterns": [
+        "<rootDir>/.jest/",
         "<rootDir>/src/hooks/",
         "<rootDir>/src/views/",
         "<rootDir>/src/forms/",
@@ -63,13 +68,14 @@
         "<rootDir>/src/storages/",
         "<rootDir>/src/services/",
         "<rootDir>/src/index.tsx",
+        "<rootDir>/.stryker-tmp/",
         "<rootDir>/src/utils/test/",
         "<rootDir>/src/utils/cache/",
         "<rootDir>/src/utils/styles/",
         "<rootDir>/src/utils/themes/",
         "<rootDir>/src/utils/locales/",
         "<rootDir>/src/utils/constants/",
-        "<rootDir>/src/utils/validators/",
+        "<rootDir>/src/utils/validators/yup",
         "<rootDir>/src/components/CacheLoader/"
     ]
 }

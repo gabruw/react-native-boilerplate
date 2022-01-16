@@ -4,10 +4,10 @@
     "version": "1.0.0",
     "main": "node_modules/expo/AppEntry.js",
     "scripts": {
-        "test": "jest",
         "eject": "expo eject",
         "start": "expo start",
         "prepare": "husky install",
+        "test": "NODE_ENV=test jest",
         "stryker": "npx stryker run",
         "format": "prettier --write .",
         "check-format": "prettier --check .",
