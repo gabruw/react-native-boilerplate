@@ -12,7 +12,7 @@
         "format": "prettier --write .",
         "check-format": "prettier --check .",
         "check-types": "tsc --pretty --noEmit",
-        "check-lint": "eslint src --ext ts --ext tsx --ext js --ext jsx",
+        "check-lint": "eslint src --ext ts --ext tsx",
         "android": "NODE_ENV=development expo start --android",
         "android:prod": "NODE_ENV=production expo start --android",
         "android:build": "NODE_ENV=production expo build:android -t apk",
