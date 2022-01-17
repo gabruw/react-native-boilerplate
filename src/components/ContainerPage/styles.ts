@@ -15,8 +15,10 @@ const useContainerPageStyles = ({ hasHeader = false }: ContainerPageStylesProps)
     const sheet = useMemo(() => (hasHeader ? SHEET.CONTAINER_WITH_HEADER : SHEET.CONTAINER), [hasHeader]);
 
     return StyleSheet.create({
-        container: {
-            ...sheet,
+        scrollView: {
+            ...sheet
+        },
+        content: {
             ...MARGIN.CONTAINER
         }
     });

@@ -16,7 +16,7 @@ const ContainerPage: FC<ContainerPageProps> = ({ children, hasHeader = false }) 
     const styles = useContainerPageStyles({ hasHeader });
 
     return (
-        <ScrollView testID={TEST_ID.container} contentContainerStyle={styles.container}>
+        <ScrollView testID={TEST_ID.container} style={styles.scrollView} contentContainerStyle={styles.content}>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>{children}</TouchableWithoutFeedback>
         </ScrollView>
     );

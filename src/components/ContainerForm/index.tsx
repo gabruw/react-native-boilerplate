@@ -1,23 +1,20 @@
 //#region Imports
 
-import React, { FC, ReactNode } from 'react';
-import { KeyboardAvoidingView } from 'react-native';
+import React, { FC } from 'react';
+import { KeyboardAwareScrollView, KeyboardAwareScrollViewProps } from 'react-native-keyboard-aware-scroll-view';
 import useContainerFormStyles from './styles';
 
 //#endregion
 
-interface ContainerFormProps {
-    children: ReactNode;
-    behavior?: 'height' | 'position' | 'padding';
-}
+type ContainerFormProps = Omit<KeyboardAwareScrollViewProps, 'style' | 'testID'>;
 
-const ContainerForm: FC<ContainerFormProps> = ({ children, behavior = 'padding' }) => {
+const ContainerForm: FC<ContainerFormProps> = ({ children, ...props }) => {
     const styles = useContainerFormStyles();
 
     return (
-        <KeyboardAvoidingView style={styles.container} behavior={behavior}>
+        <KeyboardAwareScrollView contentContainerStyle={styles.container} {...props}>
             {children}
-        </KeyboardAvoidingView>
+        </KeyboardAwareScrollView>
     );
 };
 
