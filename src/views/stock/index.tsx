@@ -1,7 +1,8 @@
 //#region Imports
 
+import ContainerPage from 'components/ContainerPage';
 import useStackNavigation from 'hooks/router/useStackNavigation';
-import React, { FC, Fragment } from 'react';
+import React, { FC } from 'react';
 import { Button } from 'react-native-paper';
 import ROUTE_NAMES from 'router/route-names';
 import { useUserDispatch } from 'storages/redux/hooks/user';
@@ -13,10 +14,10 @@ const Stock: FC = () => {
     const { navigate } = useStackNavigation();
 
     return (
-        <Fragment>
+        <ContainerPage>
             <Button onPress={() => resetUser()}>Logoff</Button>
             <Button onPress={() => navigate(ROUTE_NAMES.STACK.AUTHENTICATION)}>Go to Stack</Button>
-        </Fragment>
+        </ContainerPage>
     );
 };
 

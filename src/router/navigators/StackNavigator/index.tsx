@@ -14,7 +14,7 @@ const { Navigator, Screen } = createStackNavigator<StackNavigationRoutesProps>()
 
 const StackNavigator: FC = () => (
     <Navigator initialRouteName={ROUTE_NAMES.STACK.AUTHENTICATION}>
-        <Screen name={ROUTE_NAMES.TABS.THIS} component={TabNavigator} />
+        <Screen name={ROUTE_NAMES.TABS.THIS} component={TabNavigator} options={{ headerShown: false }} />
 
         {STACK_ROUTES.map(({ name, options, component }: StackNavigatorProps, index) => (
             <Screen key={index} name={name} options={options} component={component} />

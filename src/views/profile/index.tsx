@@ -1,6 +1,7 @@
 //#region Imports
 
-import React, { FC, Fragment } from 'react';
+import ContainerPage from 'components/ContainerPage';
+import React, { FC } from 'react';
 import { Button } from 'react-native-paper';
 import { useThemeDispatch } from 'storages/redux/hooks/theme';
 
@@ -10,9 +11,9 @@ const Profile: FC = () => {
     const { toggleTheme } = useThemeDispatch();
 
     return (
-        <Fragment>
+        <ContainerPage>
             <Button onPress={() => toggleTheme()}>Change theme</Button>
-        </Fragment>
+        </ContainerPage>
     );
 };
 
