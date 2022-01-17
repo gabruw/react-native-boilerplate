@@ -14,7 +14,7 @@ web-build/
 .DS_Store
 
 # Environment
-.env.*
+.env*
 
 # Jest
 .jest
