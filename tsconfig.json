@@ -19,7 +19,7 @@
         "noImplicitReturns": true,
         "resolveJsonModule": true,
         "types": ["jest", "node"],
-        "moduleResolution": "node",
+        "moduleResolution": "Node",
         "allowUnusedLabels": false,
         "allowUnreachableCode": false,
         "noFallthroughCasesInSwitch": true,
