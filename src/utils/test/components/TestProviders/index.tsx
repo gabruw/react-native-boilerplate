@@ -1,5 +1,6 @@
 //#region Imports
 
+import { MockedProvider } from '@apollo/client/testing';
 import React, { ReactNode } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { Provider as PaperProvider } from 'react-native-paper';
@@ -7,6 +8,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { useThemeSelector } from 'storages/redux/hooks/theme';
 import store from 'storages/redux/store';
 import i18next from 'utils/locales';
+import apolloClientMocks from 'utils/test/mocks/apollo-client';
 
 //#endregion
 
@@ -26,7 +28,9 @@ const Content = ({ children }: TestProvidersProps) => {
 
 const TestProviders = ({ children }: TestProvidersProps) => (
     <ReduxProvider store={store}>
-        <Content>{children}</Content>
+        <MockedProvider mocks={apolloClientMocks} addTypename={false}>
+            <Content>{children}</Content>
+        </MockedProvider>
     </ReduxProvider>
 );
 
