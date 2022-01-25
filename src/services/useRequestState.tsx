@@ -19,6 +19,7 @@ interface RequestState {
     setError: (error: AxiosError) => void;
     setIsLoading: (response: boolean) => void;
     setSuccess: (response: AxiosResponse) => void;
+    setErrorMessage: (message: string | string[]) => void;
 }
 
 const useRequestState = ({ setRequestState }: RequestStateProps): RequestState => {
@@ -26,6 +27,21 @@ const useRequestState = ({ setRequestState }: RequestStateProps): RequestState =
 
     const setIsLoading = useCallback(
         (isLoading: boolean): void => setRequestState((prev) => ({ ...prev, isLoading })),
+        [setRequestState]
+    );
+
+    const setErrorMessage = useCallback(
+        (message: string | string[]): void => {
+            const requestError: StateErrorProps = {
+                errors: Array.isArray(message) ? message : [message]
+            };
+
+            if (requestError.errors.length) {
+                setSnackbar({ text: requestError.errors });
+            }
+
+            setRequestState((prev) => ({ ...prev, ...requestError }));
+        },
         [setRequestState]
     );
 
@@ -56,7 +72,8 @@ const useRequestState = ({ setRequestState }: RequestStateProps): RequestState =
     return {
         setError,
         setSuccess,
-        setIsLoading
+        setIsLoading,
+        setErrorMessage
     };
 };
 

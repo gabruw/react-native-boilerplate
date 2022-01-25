@@ -25,8 +25,9 @@ const useRequestInterceptors = ({ setRequestState }: RequestInterceptorsProps): 
         (config: AxiosRequestConfig): AxiosRequestConfig => {
             setIsLoading(true);
 
-            if (token && config.headers) {
+            if (token) {
                 config.headers = {
+                    ...config.headers,
                     Authorization: `Bearer ${token}`
                 };
             }

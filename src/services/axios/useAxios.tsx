@@ -1,19 +1,17 @@
 //#region Imports
 
-import { API_URL } from '@env';
-import axios, { AxiosInstance } from 'axios';
+import { AxiosInstance } from 'axios';
 import { RequestContextStateProps } from 'models/storages/request/RequestContextProps';
 import { useState } from 'react';
 import useRequestInterceptors from './config/interceptors/useRequestInterceptors';
 import useResponseInterceptors from './config/interceptors/useResponseInterceptors';
+import useBaseAxios from './useBaseAxios';
 
 //#endregion
 
 const INITIAL_STATE: RequestContextStateProps = {
     errors: [],
-    data: undefined,
-    isLoading: false,
-    status: undefined
+    isLoading: false
 };
 
 interface Axios {
@@ -22,9 +20,8 @@ interface Axios {
 }
 
 const useAxios = (): Axios => {
+    const api = useBaseAxios();
     const [requestState, setRequestState] = useState<RequestContextStateProps>(INITIAL_STATE);
-
-    const api = axios.create({ baseURL: API_URL });
 
     const { onRequest, onRequestError } = useRequestInterceptors({ setRequestState });
     const { onResponse, onResponseError } = useResponseInterceptors({ api, setRequestState });

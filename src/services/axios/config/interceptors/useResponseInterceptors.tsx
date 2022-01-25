@@ -6,7 +6,7 @@ import UserRedux from 'models/storages/redux/slices/UserRedux';
 import { RequestContextStateProps } from 'models/storages/request/RequestContextProps';
 import { Dispatch, SetStateAction, useCallback } from 'react';
 import ROUTE_NAMES from 'router/route-names';
-import ENDPOINTS from 'services/endpoints';
+import ENDPOINTS from 'services/axios/endpoints';
 import useRequestState from 'services/useRequestState';
 import { useTokenSelector, useUserDispatch } from 'storages/redux/hooks/user';
 
@@ -14,7 +14,7 @@ import { useTokenSelector, useUserDispatch } from 'storages/redux/hooks/user';
 
 interface ResponseInterceptors {
     onResponse: (response: AxiosResponse) => AxiosResponse;
-    onResponseError: (error: AxiosError) => Promise<AxiosError>;
+    onResponseError: (error: AxiosError) => Promise<void | AxiosResponse<UserRedux> | AxiosError>;
 }
 
 interface ResponseInterceptorsProps {
@@ -39,20 +39,29 @@ const useResponseInterceptors = ({ api, setRequestState }: ResponseInterceptorsP
     }, []);
 
     const onResponseError = useCallback(
-        async (error: AxiosError): Promise<AxiosError> => {
+        async (error: AxiosError): Promise<void | AxiosResponse<UserRedux> | AxiosError> => {
             setError(error);
 
             if (error.response?.status === 401) {
-                await api
+                return await api
                     .post<UserRedux>(ENDPOINTS.AUTHENTICATION.REFRESH, token)
-                    .then(({ data }) => setUser(data))
-                    .catch(() => navigate(ROUTE_NAMES.STACK.AUTHENTICATION));
+                    .then(({ data }) => {
+                        setUser(data);
+                        error.config.headers = {
+                            ...error.config.headers,
+                            Authorization: `Bearer ${token}`
+                        };
+
+                        return api.request(error.config);
+                    })
+                    .catch(() => navigate(ROUTE_NAMES.STACK.AUTHENTICATION))
+                    .finally(() => setIsLoading(false));
             }
 
             setIsLoading(false);
             return Promise.reject(error);
         },
-        [token]
+        [api, token]
     );
 
     return {

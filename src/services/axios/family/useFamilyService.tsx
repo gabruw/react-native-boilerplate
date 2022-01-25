@@ -1,8 +1,8 @@
 //#region Imports
 
 import { useCallback } from 'react';
-import ENDPOINTS from 'services/endpoints';
-import useAxios from 'services/useAxios';
+import ENDPOINTS from 'services/axios/endpoints';
+import useAxios from 'services/axios/useAxios';
 
 //#endregion
 

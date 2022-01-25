@@ -7,8 +7,8 @@ import UserRedux from 'models/storages/redux/slices/UserRedux';
 import { RequestContextStateProps } from 'models/storages/request/RequestContextProps';
 import { useCallback } from 'react';
 import ROUTE_NAMES from 'router/route-names';
-import ENDPOINTS from 'services/endpoints';
-import useAxios from 'services/useAxios';
+import ENDPOINTS from 'services/axios/endpoints';
+import useAxios from 'services/axios/useAxios';
 import { useTokenSelector } from 'storages/redux/hooks/user';
 
 //#endregion
