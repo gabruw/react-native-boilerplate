@@ -14,11 +14,11 @@
         }
     },
     "rules": {
-        "indent": ["error", 4],
         "semi": ["error", "always"],
         "quotes": ["error", "single"],
         "linebreak-style": ["error", "windows"],
         "@typescript-eslint/no-namespace": "off",
+        "indent": ["error", 4, { "SwitchCase": 1 }],
         "no-console": ["error", { "allow": ["warm", "error"] }]
     }
 }
