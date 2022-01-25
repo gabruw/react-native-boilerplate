@@ -1,6 +1,6 @@
 //#region Imports
 
-import React, { FC } from 'react';
+import React from 'react';
 import { KeyboardAwareScrollView, KeyboardAwareScrollViewProps } from 'react-native-keyboard-aware-scroll-view';
 import useContainerFormStyles from './styles';
 
@@ -8,7 +8,7 @@ import useContainerFormStyles from './styles';
 
 type ContainerFormProps = Omit<KeyboardAwareScrollViewProps, 'style' | 'testID'>;
 
-const ContainerForm: FC<ContainerFormProps> = ({ children, ...props }) => {
+const ContainerForm = ({ children, ...props }: ContainerFormProps) => {
     const styles = useContainerFormStyles();
 
     return (

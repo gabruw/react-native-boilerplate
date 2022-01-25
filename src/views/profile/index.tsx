@@ -1,13 +1,13 @@
 //#region Imports
 
 import ContainerPage from 'components/ContainerPage';
-import React, { FC } from 'react';
+import React from 'react';
 import { Button } from 'react-native-paper';
 import { useThemeDispatch } from 'storages/redux/hooks/theme';
 
 //#endregion
 
-const Profile: FC = () => {
+const Profile = () => {
     const { toggleTheme } = useThemeDispatch();
 
     return (

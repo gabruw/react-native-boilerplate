@@ -4,7 +4,7 @@ import SplashScreen from 'components/SplashScreen';
 import { Asset as ExpoAsset } from 'expo-asset';
 import * as ExpoFont from 'expo-font';
 import * as ExpoSplashScreen from 'expo-splash-screen';
-import React, { FC, Fragment, ReactNode, useCallback, useEffect, useState } from 'react';
+import React, { Fragment, ReactNode, useCallback, useEffect, useState } from 'react';
 import { useSnackbarDispatch } from 'storages/redux/hooks/snackbar';
 import FONTS_CACHEABLE from 'utils/cache/fonts';
 import IMAGES_CACHEABLE from 'utils/cache/images';
@@ -15,7 +15,7 @@ interface CacheLoaderProps {
     children: ReactNode;
 }
 
-const CacheLoader: FC<CacheLoaderProps> = ({ children }) => {
+const CacheLoader = ({ children }: CacheLoaderProps) => {
     const [isReady, setIsReady] = useState(false);
 
     const { setSnackbar } = useSnackbarDispatch();

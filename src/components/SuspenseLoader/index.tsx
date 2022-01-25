@@ -1,13 +1,13 @@
 //#region Imports
 
 import AnimatedLottieView from 'lottie-react-native';
-import React, { FC } from 'react';
+import React from 'react';
 import { Modal, SafeAreaView } from 'react-native';
 import useSuspenseLoaderStyles from './styles';
 
 //#endregion
 
-const SuspenseLoader: FC = () => {
+const SuspenseLoader = () => {
     const styles = useSuspenseLoaderStyles();
 
     return (

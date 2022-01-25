@@ -1,7 +1,7 @@
 //#region Imports
 
 import AnimatedLottieView from 'lottie-react-native';
-import React, { FC, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { Modal, SafeAreaView } from 'react-native';
 import { useAnimationBackdropDispatch, useAnimationBackdropSelector } from 'storages/redux/hooks/animation-backdrop';
 import ANIMATION_BACKDROP_LIBRARY from 'utils/constants/animation/animation-backdrop-library';
@@ -9,7 +9,7 @@ import useAnimationScreenStyles from './styles';
 
 //#endregion
 
-const AnimationBackdrop: FC = () => {
+const AnimationBackdrop = () => {
     const styles = useAnimationScreenStyles();
 
     const { visibility, animation } = useAnimationBackdropSelector();

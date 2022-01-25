@@ -2,17 +2,16 @@
 
 import { BottomTabHeaderProps } from '@react-navigation/bottom-tabs';
 import { StackHeaderProps } from '@react-navigation/stack';
-import React, { FC, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { Appbar } from 'react-native-paper';
 
 //#endregion
 
+type AppbarHeaderProps = StackHeaderProps | BottomTabHeaderProps;
+
 const { Header, Content, BackAction } = Appbar;
 
-const AppbarHeader: FC<StackHeaderProps | BottomTabHeaderProps> = ({
-    navigation: { canGoBack, goBack },
-    route: { name }
-}) => {
+const AppbarHeader = ({ navigation: { canGoBack, goBack }, route: { name } }: AppbarHeaderProps) => {
     const canReturn = useMemo(() => canGoBack(), [canGoBack]);
 
     return (

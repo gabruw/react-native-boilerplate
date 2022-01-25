@@ -1,7 +1,7 @@
 //#region Imports
 
 import FieldInputProps, { TextInputProps } from 'models/containers/FieldInput';
-import React, { FC, Fragment, useCallback, useState } from 'react';
+import React, { Fragment, useCallback, useState } from 'react';
 import { useController } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { NativeSyntheticEvent, TextInputFocusEventData } from 'react-native';
@@ -11,7 +11,9 @@ import useFieldInputRight from './hooks/useFieldInputRight';
 
 //#endregion
 
-const FieldInput: FC<FieldInputProps & TextInputProps> = ({
+type TextFieldInputProps = FieldInputProps & TextInputProps;
+
+const FieldInput = ({
     name,
     mask,
     left,
@@ -23,7 +25,7 @@ const FieldInput: FC<FieldInputProps & TextInputProps> = ({
     isDisabled = false,
     isPassword = false,
     ...rest
-}) => {
+}: TextFieldInputProps) => {
     const { t } = useTranslation();
 
     const [isFocused, setIsFocused] = useState<boolean>(false);

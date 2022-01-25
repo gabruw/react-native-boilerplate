@@ -4,13 +4,13 @@ import NetInfo from '@react-native-community/netinfo';
 import NetInfoModal from 'components/NetInfoModal';
 import { ModalRefProps } from 'models/components/Modal';
 import NetInfoContextState, { NetInfoContextProps } from 'models/storages/net-info/NetInfoContextProps';
-import React, { createContext, FC, useContext, useRef } from 'react';
+import React, { createContext, useContext, useRef } from 'react';
 
 //#endregion
 
 const NetInfoContext = createContext<NetInfoContextState>({} as NetInfoContextState);
 
-export const NetInfoContextProvider: FC<NetInfoContextProps> = ({ children }) => {
+export const NetInfoContextProvider = ({ children }: NetInfoContextProps) => {
     const modalRef = useRef<ModalRefProps>(null);
 
     const unsubscribe = NetInfo.addEventListener((state) => {

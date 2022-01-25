@@ -1,13 +1,13 @@
 //#region Imports
 
-import React, { FC, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { CountdownCircleTimer } from 'react-native-countdown-circle-timer';
 import { IconButton } from 'react-native-paper';
 import { useSnackbarDispatch, useSnackbarSelector } from 'storages/redux/hooks/snackbar';
 
 //#endregion
 
-const CountdownTimerSnackbar: FC = () => {
+const CountdownTimerSnackbar = () => {
     const { duration } = useSnackbarSelector();
     const { toggleSnackbar } = useSnackbarDispatch();
 

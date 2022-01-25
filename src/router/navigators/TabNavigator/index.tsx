@@ -4,14 +4,14 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TabNavigationRoutesProps from 'models/router/TabNavigationRoutesProps';
 import TabNavigatorProps from 'models/router/TabNavigatorProps';
-import React, { FC } from 'react';
+import React from 'react';
 import { TAB_ROUTES } from 'router/routes';
 
 //#endregion
 
 const { Navigator, Screen } = createBottomTabNavigator<TabNavigationRoutesProps>();
 
-const TabNavigator: FC = () => (
+const TabNavigator = () => (
     <Navigator screenOptions={{ headerShown: false }}>
         {TAB_ROUTES.map(({ name, iconName, options, component }: TabNavigatorProps, index) => (
             <Screen

@@ -5,15 +5,15 @@ import ContainerForm from 'components/ContainerForm';
 import AuthenticationFormModule from 'forms/modules/authentication/AuthenticationFormModule';
 import useHookForms from 'hooks/form/useHookForms';
 import Authentication from 'models/authentication/Authentication';
-import React, { FC, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { FormProvider } from 'react-hook-form';
-import useUserService from 'services/user/useUserService';
+import useUserService from 'services/axios/user/useUserService';
 import { useUserDispatch } from 'storages/redux/hooks/user';
 import useAuthenticationSchema from 'utils/validators/yup/schemas/useAuthenticationSchema';
 
 //#endregion
 
-const AuthenticationForm: FC = () => {
+const AuthenticationForm = () => {
     const schema = useAuthenticationSchema();
     const [form, { handleSubmit, reset }] = useHookForms<Authentication>({ schema });
 

@@ -3,14 +3,14 @@
 import FieldInput from 'containers/FieldInput';
 import FieldDateProps from 'models/containers/FieldDate';
 import moment from 'moment';
-import React, { FC, Fragment, useCallback, useState } from 'react';
+import React, { Fragment, useCallback, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import dateMask from 'utils/validators/masks/date';
 
 //#endregion
 
-const FieldDate: FC<FieldDateProps> = ({ name, label, inputProps, dateTimePickerProps }) => {
+const FieldDate = ({ name, label, inputProps, dateTimePickerProps }: FieldDateProps) => {
     const [date, setDate] = useState<Date>(new Date());
     const [visible, setVisible] = useState<boolean>(false);
 

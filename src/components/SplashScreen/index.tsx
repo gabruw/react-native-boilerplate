@@ -2,7 +2,7 @@
 
 import * as ExpoSplashScreen from 'expo-splash-screen';
 import AnimatedLottieView from 'lottie-react-native';
-import React, { FC, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { SafeAreaView } from 'react-native';
 import useSplashScreenStyles from './styles';
 
@@ -12,7 +12,7 @@ interface SplashScreenProps {
     isReady: boolean;
 }
 
-const SplashScreen: FC<SplashScreenProps> = ({ isReady }) => {
+const SplashScreen = ({ isReady }: SplashScreenProps) => {
     const styles = useSplashScreenStyles();
 
     const handleHideSplashScreen = useCallback(async () => {

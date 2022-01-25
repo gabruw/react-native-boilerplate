@@ -2,14 +2,14 @@
 
 import ContainerPage from 'components/ContainerPage';
 import useStackNavigation from 'hooks/router/useStackNavigation';
-import React, { FC } from 'react';
+import React from 'react';
 import { Button } from 'react-native-paper';
 import ROUTE_NAMES from 'router/route-names';
 import { useUserDispatch } from 'storages/redux/hooks/user';
 
 //#endregion
 
-const Stock: FC = () => {
+const Stock = () => {
     const { resetUser } = useUserDispatch();
     const { navigate } = useStackNavigation();
 

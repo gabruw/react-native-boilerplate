@@ -3,14 +3,14 @@
 import { useFocusEffect } from '@react-navigation/native';
 import ContainerPage from 'components/ContainerPage';
 import useTabNavigation from 'hooks/router/useTabNavigation';
-import React, { FC, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import ROUTE_NAMES from 'router/route-names';
 import { useUserSelector } from 'storages/redux/hooks/user';
 import AuthenticationForm from './components/AuthenticationForm';
 
 //#endregion
 
-const Authentication: FC = () => {
+const Authentication = () => {
     const user = useUserSelector();
     const { navigate } = useTabNavigation();
 

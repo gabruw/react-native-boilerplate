@@ -1,7 +1,7 @@
 //#region Imports
 
 import { SnackbarAction } from 'models/components/Snackbar';
-import React, { FC, useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 import { Portal, Snackbar as PaperSnackbar } from 'react-native-paper';
@@ -12,7 +12,7 @@ import useSnackbarStyles from './styles';
 
 //#endregion
 
-const Snackbar: FC = () => {
+const Snackbar = () => {
     const { t } = useTranslation();
     const styles = useSnackbarStyles();
 

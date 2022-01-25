@@ -4,7 +4,7 @@ import { Picker, PickerProps } from '@react-native-picker/picker';
 import useAnimateTextStyles from 'hooks/styles/useAnimatedTextStyles';
 import useFieldColor from 'hooks/styles/useFieldIconColor';
 import { FieldPickerOptions } from 'models/containers/FieldPicker';
-import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useController } from 'react-hook-form';
 import { Animated, NativeSyntheticEvent, TargetedEvent, View } from 'react-native';
 import { ActivityIndicator, HelperText } from 'react-native-paper';
@@ -21,7 +21,7 @@ interface FieldPickerProps extends Omit<PickerProps, 'enabled'> {
     options: FieldPickerOptions[];
 }
 
-const FieldPicker: FC<FieldPickerProps> = ({
+const FieldPicker = ({
     name,
     label,
     onBlur,
@@ -30,7 +30,7 @@ const FieldPicker: FC<FieldPickerProps> = ({
     isLoading = false,
     isDisabled = false,
     ...rest
-}) => {
+}: FieldPickerProps) => {
     const [isFocused, setIsFocused] = useState<boolean>(false);
 
     const {

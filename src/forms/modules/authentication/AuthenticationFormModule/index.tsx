@@ -1,13 +1,13 @@
 //#region Imports
 
 import FieldInput from 'containers/FieldInput';
-import React, { FC, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import AUTHENTICATION_FIELDS from 'utils/constants/fields/authentication.json';
 import maxLength from 'utils/validators/masks/maxLength';
 
 //#endregion
 
-const AuthenticationFormModule: FC = () => (
+const AuthenticationFormModule = () => (
     <Fragment>
         <FieldInput
             mask={(val) => maxLength(val, 80)}

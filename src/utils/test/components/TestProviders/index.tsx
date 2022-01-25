@@ -1,6 +1,6 @@
 //#region Imports
 
-import React, { FC, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { Provider as ReduxProvider } from 'react-redux';
@@ -14,7 +14,7 @@ interface TestProvidersProps {
     children: ReactNode;
 }
 
-const Content: FC<TestProvidersProps> = ({ children }) => {
+const Content = ({ children }: TestProvidersProps) => {
     const { paperTheme } = useThemeSelector();
 
     return (
@@ -24,7 +24,7 @@ const Content: FC<TestProvidersProps> = ({ children }) => {
     );
 };
 
-const TestProviders: FC<TestProvidersProps> = ({ children }) => (
+const TestProviders = ({ children }: TestProvidersProps) => (
     <ReduxProvider store={store}>
         <Content>{children}</Content>
     </ReduxProvider>
