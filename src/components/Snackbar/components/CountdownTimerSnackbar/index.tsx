@@ -18,15 +18,12 @@ const CountdownTimerSnackbar = () => {
             isPlaying
             size={30}
             strokeWidth={3}
-            trailColor='white'
+            trailColor='#FFFFFF'
             duration={durationCircleTimer}
-            colors={[
-                ['#007712', 0.3],
-                ['#F7B801', 0.4],
-                ['#A30000', 0.3]
-            ]}
+            colors={['#007712', '#F7B801', '#A30000']}
+            colorsTime={[durationCircleTimer / 2, durationCircleTimer / 3, 0]}
         >
-            <IconButton icon='times' size={15} color='white' onPress={() => toggleSnackbar()} />
+            {() => <IconButton icon='times' size={15} color='white' onPress={() => toggleSnackbar()} />}
         </CountdownCircleTimer>
     );
 };
