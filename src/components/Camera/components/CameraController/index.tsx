@@ -1,6 +1,8 @@
 import { ReactElement } from "react";
 import { GestureEvent, PinchGestureHandler, PinchGestureHandlerEventPayload } from "react-native-gesture-handler";
 
+import LoadingAnimation from "@app/assets/animations/loading.json";
+import { AnimatedBackdrop } from "@app/components/AnimatedBackdrop";
 import { FlashButton } from "@app/components/Camera/components/CameraController/components/FlashButton";
 import { PictureButton } from "@app/components/Camera/components/CameraController/components/PictureButton";
 import { TypeButton } from "@app/components/Camera/components/CameraController/components/TypeButton";
@@ -18,7 +20,7 @@ const CameraController = (): ReactElement => {
     return (
         <>
             {isLoading ? (
-                <></>
+                <AnimatedBackdrop lottie={{ source: LoadingAnimation }} isVisible />
             ) : (
                 <PinchGestureHandler onGestureEvent={onPinchZoom}>
                     <FlexCamera
