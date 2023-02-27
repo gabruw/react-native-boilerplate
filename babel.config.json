@@ -1,0 +1,36 @@
+{
+    "env": {
+        "production": {
+            "plugins": ["transform-remove-console", "react-native-paper/babel"]
+        }
+    },
+    "presets": [
+        "babel-preset-expo",
+        "@babel/preset-typescript",
+        "module:metro-react-native-babel-preset",
+        ["@babel/preset-env", { "targets": { "node": "current" } }]
+    ],
+    "plugins": [
+        [
+            "module-resolver",
+            {
+                "alias": {
+                    "@app": "./src"
+                }
+            }
+        ],
+        [
+            "module:react-native-dotenv",
+            {
+                "safe": false,
+                "path": ".env",
+                "verbose": false,
+                "blocklist": null,
+                "allowlist": null,
+                "envName": "APP_ENV",
+                "moduleName": "@env",
+                "allowUndefined": true
+            }
+        ]
+    ]
+}

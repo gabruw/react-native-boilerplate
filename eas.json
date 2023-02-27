@@ -1,0 +1,25 @@
+{
+    "cli": {
+        "version": ">= 3.5.1"
+    },
+    "build": {
+        "production": {
+            "node": "16.13.0",
+            "ios": {
+                "resourceClass": "m1-medium"
+            },
+            "android": {
+                "gradleCommand": ":app:assembleDebug"
+            }
+        },
+        "preview": {
+            "extends": "production",
+            "distribution": "internal"
+        },
+        "development": {
+            "extends": "production",
+            "developmentClient": true,
+            "distribution": "internal"
+        }
+    }
+}

@@ -1,11 +1,11 @@
 # Config/Tmp/Cache
-.expo
-.expo-shared
 .husky
 .jest
+.github
 .stryker-tmp
 .vscode
 
 # Source/Reports
+dist
 reports
 node_modules

@@ -1,0 +1,73 @@
+{
+    "env": {
+        "es2021": true,
+        "browser": true
+    },
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": "latest"
+    },
+    "plugins": ["react", "import", "prettier"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/typescript",
+        "plugin:react/recommended",
+        "plugin:import/recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "settings": {
+        "react": {
+            "version": "detect"
+        },
+        "import/ignore": ["react-native", "@react-navigation"],
+        "import/parsers": {
+            "@typescript-eslint/parser": [".js", ".ts", ".tsx"]
+        },
+        "import/resolver": {
+            "typescript": {
+                "alwaysTryTypes": true,
+                "project": "tsconfig.json",
+                "extensions": [".js", ".ts", ".tsx"]
+            }
+        }
+    },
+    "rules": {
+        "react/display-name": "off",
+        "react/react-in-jsx-scope": "off",
+        "react/no-unescaped-entities": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "import/no-unresolved": [2, { "ignore": ["@env"] }],
+        "sort-imports": ["error", { "ignoreCase": true, "ignoreDeclarationSort": true }],
+        "import/order": [
+            "warn",
+            {
+                "newlines-between": "always",
+                "pathGroupsExcludedImportTypes": ["react"],
+                "groups": ["builtin", "external", "internal", ["parent", "sibling", "object", "type"]],
+                "alphabetize": {
+                    "order": "asc",
+                    "caseInsensitive": true
+                },
+                "pathGroups": [
+                    {
+                        "group": "builtin",
+                        "position": "after",
+                        "pattern": "react|expo|@react|@expo"
+                    },
+                    {
+                        "group": "external",
+                        "position": "before",
+                        "pattern": "redux|react-redux|@apollo"
+                    },
+                    {
+                        "group": "internal",
+                        "position": "before",
+                        "pattern": "@app/**"
+                    }
+                ]
+            }
+        ]
+    }
+}
