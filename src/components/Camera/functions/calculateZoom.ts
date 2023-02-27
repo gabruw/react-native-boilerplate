@@ -1,6 +1,7 @@
 import { Platform } from "react-native";
 
 import { PinchZoom } from "@app/components/Camera/types";
+import { Devices } from "@app/constants/devices";
 
 const calculateZoom = (currentZoom: number, scale: PinchZoom["scale"], velocity: PinchZoom["velocity"]) => {
     let zoom = 0;
@@ -8,10 +9,10 @@ const calculateZoom = (currentZoom: number, scale: PinchZoom["scale"], velocity:
 
     if (decreasedVelocity > 0) {
         zoom = currentZoom + scale * decreasedVelocity;
-        zoom *= Platform.OS === "ios" ? 0.01 : 25;
+        zoom *= Platform.OS === Devices.IOS ? 0.01 : 25;
     } else {
         zoom = currentZoom - scale * Math.abs(decreasedVelocity);
-        zoom *= Platform.OS === "ios" ? 0.02 : 50;
+        zoom *= Platform.OS === Devices.IOS ? 0.02 : 50;
     }
 
     if (zoom < 0) {

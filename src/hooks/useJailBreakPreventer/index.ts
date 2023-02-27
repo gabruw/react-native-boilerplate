@@ -2,6 +2,8 @@ import JailMonkey from "jail-monkey";
 import { useCallback } from "react";
 import { Platform } from "react-native";
 
+import { Devices } from "@app/constants/devices";
+
 type JailBreakPreventerReturn = {
     isJailBroken: () => boolean;
     isAndroidInsecure: () => boolean;
@@ -9,7 +11,7 @@ type JailBreakPreventerReturn = {
 
 const useJailBreak = (): JailBreakPreventerReturn => {
     const isAndroidInsecure = useCallback((): boolean => {
-        if (Platform.OS !== "android") {
+        if (Platform.OS !== Devices.ANDROID) {
             return false;
         }
 
