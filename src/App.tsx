@@ -1,41 +1,45 @@
-//#region Imports
+import { ReactElement } from "react";
+import { Provider as PaperProvider } from "react-native-paper";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import { PersistGate } from "redux-persist/integration/react";
 
-import FontAwesomeIcon from '@expo/vector-icons/FontAwesome5';
-import { NavigationContainer } from '@react-navigation/native';
-import AnimationBackdrop from 'components/AnimationBackdrop';
-import ApolloContainer from 'components/ApolloContainer';
-import CacheLoader from 'components/CacheLoader';
-import Snackbar from 'components/Snackbar';
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { Provider as PaperProvider } from 'react-native-paper';
-import Router from 'router/navigators/StackNavigator';
-import { NetInfoContextProvider } from 'storages/net-info';
-import { useThemeSelector } from 'storages/redux/hooks/theme';
+import LoadingAnimation from "@app/assets/animations/loading.json";
+import { AnimatedBackdrop } from "@app/components/AnimatedBackdrop";
+import { ConnectionInfoModal } from "@app/components/ConnectionInfoModal";
+import { Snackbar } from "@app/components/Snackbar";
+import { SplashScreen } from "@app/components/SplashScreen";
+import { StatusBar } from "@app/components/StatusBar";
+import { Router } from "@app/router";
+import { persistor } from "@app/storages/system";
+import { TranslationsProvider } from "@app/storages/translations";
+import { usePaperTheme } from "@app/themes/hooks/usePaperTheme";
 
-//#endregion
-
-const App = () => {
-    const { paperTheme, navigationTheme, statusBarTheme } = useThemeSelector();
+const App = (): ReactElement => {
+    const theme = usePaperTheme();
 
     return (
-        <PaperProvider theme={paperTheme} settings={{ icon: (props) => <FontAwesomeIcon {...props} /> }}>
-            <NavigationContainer theme={navigationTheme}>
-                <CacheLoader>
-                    <ApolloContainer>
-                        <NetInfoContextProvider>
-                            <StatusBar style={statusBarTheme} animated />
+        <PaperProvider
+            theme={theme}
+            settings={{
+                icon: (props) => <Ionicons {...props} />,
+            }}
+        >
+            <PersistGate
+                persistor={persistor}
+                loading={<AnimatedBackdrop lottie={{ source: LoadingAnimation }} isVisible />}
+            >
+                <TranslationsProvider>
+                    <SplashScreen>
+                        <StatusBar />
+                        <Router />
 
-                            <AnimationBackdrop />
-                            <Snackbar />
-
-                            <Router />
-                        </NetInfoContextProvider>
-                    </ApolloContainer>
-                </CacheLoader>
-            </NavigationContainer>
+                        <Snackbar />
+                        <ConnectionInfoModal />
+                    </SplashScreen>
+                </TranslationsProvider>
+            </PersistGate>
         </PaperProvider>
     );
 };
 
-export default App;
+export { App };

@@ -1,6 +1,0 @@
-{
-    "array": {
-        "min": "'{{label}}' deve ter no mínimo {{min}} itens",
-        "max": "'{{label}}' deve ter no máximo {{max}} itens"
-    }
-}

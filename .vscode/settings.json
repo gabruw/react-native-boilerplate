@@ -1,90 +1,56 @@
 {
-    // Prettier
-    "prettier.tabWidth": 4,
-    "prettier.ignorePath": ".prettierignore",
-    // Formatter's
-    "[html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[javascriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    // Workbench
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.editor.tabSizing": "shrink",
+    // cSpell
+    "cSpell.language": "en,pt-BR",
+
     // GIT
     "git.enabled": true,
     "git.autofetch": true,
     "git.detectSubmodules": false,
     "git.enableSmartCommit": true,
     "git.ignoreLimitWarning": true,
-    // Terminal
-    "terminal.integrated.defaultProfile.windows": "Git Bash",
+
+    // Jest
+    "jest.autoRun": {
+        "onStartup": []
+    },
+
+    // React Native
+    "react-native.packager.port": 19000,
+
+    // JSON
+    "json.format.enable": true,
+
     // HTML
     "html.format.enable": true,
     "html.suggest.html5": true,
     "html.autoClosingTags": true,
     "html.validate.scripts": false,
-    "html.format.endWithNewline": true,
     "html.format.indentInnerHtml": true,
-    // JSON
-    "json.format.enable": true,
+
     // Javascript
     "javascript.format.enable": true,
     "javascript.validate.enable": true,
     "javascript.suggest.autoImports": true,
     "javascript.suggestionActions.enabled": true,
-    "javascript.preferences.quoteStyle": "single",
     "javascript.suggest.completeFunctionCalls": true,
-    "javascript.format.insertSpaceAfterConstructor": true,
     "javascript.updateImportsOnFileMove.enabled": "always",
-    "javascript.format.insertSpaceAfterCommaDelimiter": true,
-    "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
-    "javascript.format.placeOpenBraceOnNewLineForFunctions": false,
-    "javascript.format.placeOpenBraceOnNewLineForControlBlocks": false,
-    "javascript.format.insertSpaceAfterSemicolonInForStatements": true,
-    "javascript.format.insertSpaceBeforeAndAfterBinaryOperators": true,
-    "javascript.format.insertSpaceAfterKeywordsInControlFlowStatements": true,
-    "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
-    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
-    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
-    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": true,
-    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": true,
+
     // Typescript
     "typescript.format.enable": true,
     "typescript.validate.enable": true,
     "typescript.suggest.autoImports": true,
     "typescript.suggestionActions.enabled": true,
-    "typescript.preferences.quoteStyle": "single",
     "typescript.suggest.completeFunctionCalls": true,
-    "typescript.format.insertSpaceAfterConstructor": true,
     "typescript.updateImportsOnFileMove.enabled": "always",
-    "typescript.format.insertSpaceAfterCommaDelimiter": true,
-    "typescript.format.insertSpaceBeforeFunctionParenthesis": true,
-    "typescript.format.placeOpenBraceOnNewLineForFunctions": false,
-    "typescript.format.placeOpenBraceOnNewLineForControlBlocks": false,
-    "typescript.format.insertSpaceAfterSemicolonInForStatements": true,
-    "typescript.format.insertSpaceBeforeAndAfterBinaryOperators": true,
-    "typescript.format.insertSpaceAfterKeywordsInControlFlowStatements": true,
-    "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
-    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
-    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
-    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": true,
-    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": true,
+    "typescript.preferences.importModuleSpecifier": "relative",
+
+    // Workbench
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.iconTheme": "material-icon-theme",
+
+    // Explorer
+    "explorer.copyRelativePathSeparator": "/",
+
     // Files
     "files.eol": "\n",
     "files.autoSave": "off",
@@ -92,20 +58,21 @@
     "files.trimFinalNewlines": true,
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
-    "files.exclude": {
-        "**/.DS_Store": true,
-        "**/.git": true,
-        "**/.hg": true,
-        "**/.svn": true,
-        "**/CVS": true
+
+     // Search
+    "search.useIgnoreFiles": true,
+    "search.exclude": {
+        ".expo/**/*": true,
+        ".jest/**/*": true,
+        ".husky/**/*": true,
+        ".github/**/*": true,
+        ".vscode/**/*": true,
+        "android/**/*": true,
+        "reports/**/*": true,
+        "node_modules/**/*": true,
+        ".stryker-tmp/**/*": true,
     },
-    "files.watcherExclude": {
-        "**/*.spec.ts": true,
-        "**/.git/objects/**": true,
-        "**/.git/subtree-cache/**": true,
-        "**/bower_components/*/**": true,
-        "**/node_modules/*/**": true
-    },
+
     // Editor
     "editor.tabSize": 4,
     "editor.fontSize": 15,
@@ -131,13 +98,6 @@
     "editor.codeActionsOnSave": {
         "source.fixAll.format": true,
         "source.fixAll.eslint": true,
-        "source.organizeImports": true
-    },
-    // Misc.
-    "search.useIgnoreFiles": true,
-    "explorer.confirmDelete": false,
-    "search.exclude": {
-        "**/node_modules/**/*": true
-    },
-    "cSpell.language": "en,pt,pt-BR"
+        "source.organizeImports": false
+    }
 }

@@ -4,7 +4,6 @@
 
     // List of extensions which should be recommended for users of this workspace.
     "recommendations": [
-        "silvenon.mdx",
         "eamodio.gitlens",
         "orta.vscode-jest",
         "quicktype.quicktype",
@@ -21,18 +20,19 @@
         "yzhang.markdown-all-in-one",
         "aaron-bond.better-comments",
         "xabikos.javascriptsnippets",
-        "clinyong.vscode-css-modules",
         "philsinatra.nested-comments",
         "sonarsource.sonarlint-vscode",
         "formulahendry.auto-close-tag",
         "formulahendry.auto-rename-tag",
         "chakrounanas.turbo-console-log",
         "dsznajder.es7-react-js-snippets",
-        "planbcoding.vscode-react-refactor",
+        "bierner.github-markdown-preview",
+        "cschleiden.vscode-github-actions",
         "christian-kohler.npm-intellisense",
         "christian-kohler.path-intellisense",
         "kisstkondoros.vscode-gutter-preview",
         "streetsidesoftware.code-spell-checker",
+        "styled-components.vscode-styled-components",
         "streetsidesoftware.code-spell-checker-portuguese-brazilian"
     ],
     // List of extensions recommended by VS Code that should not be recommended for users of this workspace.

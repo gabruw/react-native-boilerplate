@@ -1,6 +1,0 @@
-{
-    "date": {
-        "min": "'{{label}}' deve ser maior que a data {{min}}",
-        "max": "'{{label}}' deve ser menor que a data {{max}}"
-    }
-}

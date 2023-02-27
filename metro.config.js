@@ -1,7 +1,6 @@
-const { getDefaultConfig } = require('metro-config');
-const { resolver: defaultResolver } = getDefaultConfig.getDefaultValues();
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
 
-exports.resolver = {
-    ...defaultResolver,
-    sourceExts: [...defaultResolver.sourceExts, 'cjs']
-};
+const { getDefaultConfig } = require("expo/metro-config");
+
+module.exports = getDefaultConfig(__dirname);

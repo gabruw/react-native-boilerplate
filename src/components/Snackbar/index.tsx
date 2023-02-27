@@ -1,54 +1,42 @@
-//#region Imports
+import React from "react";
+import { Snackbar as PaperSnackbar, Text } from "react-native-paper";
 
-import { SnackbarAction } from 'models/components/Snackbar';
-import React, { useCallback, useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
-import { View } from 'react-native';
-import { Portal, Snackbar as PaperSnackbar } from 'react-native-paper';
-import { useSnackbarDispatch, useSnackbarSelector } from 'storages/redux/hooks/snackbar';
-import CountdownTimerSnackbar from './components/CountdownTimerSnackbar';
-import TextSnackbar from './components/TextSnackbar';
-import useSnackbarStyles from './styles';
-
-//#endregion
+import { SNACKBAR_TYPES } from "@app/components/Snackbar/constants/snackbar-types";
+import { useSnackbarActions } from "@app/storages/system/hooks/snackbar/useSnackbarActions";
+import { useSnackbarSelection } from "@app/storages/system/hooks/snackbar/useSnackbarSelection";
 
 const Snackbar = () => {
-    const { t } = useTranslation();
-    const styles = useSnackbarStyles();
+    const { isVisible, type, action, duration, description } = useSnackbarSelection();
+    const { resetSnackbarDispatch, hideSnackbarDispatch } = useSnackbarActions();
 
-    const { toggleSnackbar } = useSnackbarDispatch();
-    const { isVisible, duration, type, action } = useSnackbarSelector();
+    const { icon, style } = SNACKBAR_TYPES[type];
 
-    const label = useMemo((): string => t(action.label || 'commons.snackbar.default.action-label'), [action]);
-    const partialAction = useMemo(
-        (): SnackbarAction | undefined => action.onPress && { ...action, label, onPress: handleActionPress },
-        [action]
-    );
-
-    const handleActionPress = useCallback(() => {
-        action.onPress && action.onPress();
-        toggleSnackbar();
-    }, [action]);
+    const handleDismiss = () => {
+        hideSnackbarDispatch();
+        setTimeout(resetSnackbarDispatch, 100);
+    };
 
     return (
-        <Portal>
-            <PaperSnackbar
-                visible={isVisible}
-                duration={duration}
-                style={styles[type]}
-                action={partialAction}
-                onDismiss={() => toggleSnackbar()}
-            >
-                <View style={styles.content}>
-                    <View style={styles.textContainer}>
-                        <TextSnackbar />
-                    </View>
-
-                    {!action.onPress && <CountdownTimerSnackbar />}
-                </View>
-            </PaperSnackbar>
-        </Portal>
+        <PaperSnackbar
+            icon={icon}
+            style={style}
+            duration={duration}
+            onDismiss={handleDismiss}
+            visible={isVisible || !!duration}
+            action={{
+                uppercase: true,
+                loading: action?.isLoading,
+                disabled: action?.isDisabled,
+                label: action?.label || "HIDE",
+                onPress: action?.onPress || handleDismiss,
+                labelStyle: {
+                    color: "#FFFFFF",
+                },
+            }}
+        >
+            <Text>{description}</Text>
+        </PaperSnackbar>
     );
 };
 
-export default Snackbar;
+export { Snackbar };

@@ -1,32 +1,54 @@
 {
+    "name": "react-native-boilerplate",
     "expo": {
+        "owner": "snypark",
         "version": "1.0.0",
-        "entryPoint": "./src",
-        "name": "Radar Solidário",
-        "slug": "radar-solidario",
-        "orientation": "portrait",
-        "assetBundlePatterns": ["**/*"],
+        "platforms": ["ios", "android"],
+        "name": "React Native Boilerplate",
+        "slug": "react-native-boilerplate",
+        "githubUrl": "https://github.com/gabruw/react-native-boilerplate",
+        "assetBundlePatterns": ["./src/assets/app", "./src/assets/icons"],
+        "description": "A React Native boilerplate for wonderful applications",
+        "sdkVersion": "47.0.0",
+        "entryPoint": "index.js",
         "userInterfaceStyle": "automatic",
-        "plugins": ["expo-community-flipper"],
-        "icon": "./src/assets/images/system/icon.png",
+        "icon": "./src/assets/app/icon.png",
         "ios": {
-            "supportsTablet": true
-        },
-        "updates": {
-            "fallbackToCacheTimeout": 0
-        },
-        "web": {
-            "favicon": "./src/assets/images/system/favicon.png"
-        },
-        "splash": {
-            "resizeMode": "contain",
-            "backgroundColor": "#FFFFFF",
-            "image": "./src/assets/images/system/splash.png"
+            "splash": {
+                "resizeMode": "contain",
+                "backgroundColor": "#FFFFFF",
+                "image": "./src/assets/app/splash.png",
+                "tabletImage": "./src/assets/app/splash.png",
+                "dark": {
+                    "resizeMode": "contain",
+                    "backgroundColor": "#000000",
+                    "image": "./src/assets/app/splash.png",
+                    "tabletImage": "./src/assets/app/splash.png"
+                }
+            }
         },
         "android": {
             "adaptiveIcon": {
                 "backgroundColor": "#FFFFFF",
-                "foregroundImage": "./src/assets/images/system/adaptive-icon.png"
+                "foregroundImage": "./src/assets/app/adaptive-icon.png"
+            },
+            "splash": {
+                "resizeMode": "contain",
+                "backgroundColor": "#FFFFFF",
+                "image": "./src/assets/app/splash.png",
+                "tabletImage": "./src/assets/app/splash.png",
+                "dark": {
+                    "resizeMode": "contain",
+                    "backgroundColor": "#000000",
+                    "image": "./src/assets/app/splash.png",
+                    "tabletImage": "./src/assets/app/splash.png"
+                }
+            },
+            "package": "com.gabruw.reactnativeboilerplate"
+        },
+        "extra": {
+            "eas": {
+                "projectId": "1bab744a-db94-4a3d-af02-943a73d5a5cf"
             }
         }
     }

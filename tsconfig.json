@@ -1,31 +1,11 @@
 {
-    "extends": "expo/tsconfig.base",
-    "include": ["./src/**/*.ts", "./src/**/*.tsx"],
-    "exclude": ["node_modules", "babel.config.js", "jest.config.json", "stryker.conf.json"],
+    "include": ["src"],
+    "extends": "expo/tsconfig.base.json",
     "compilerOptions": {
-        "noEmit": true,
-        "pretty": true,
         "strict": true,
-        "allowJs": true,
-        "sourceMap": true,
-        "baseUrl": "./src",
-        "module": "es2022",
-        "target": "ES2021",
-        "declaration": true,
-        "skipLibCheck": true,
-        "jsx": "react-native",
-        "esModuleInterop": true,
-        "isolatedModules": true,
-        "noImplicitReturns": true,
-        "resolveJsonModule": true,
-        "types": ["jest", "node"],
-        "moduleResolution": "Node",
-        "allowUnusedLabels": false,
-        "allowUnreachableCode": false,
-        "noFallthroughCasesInSwitch": true,
-        "lib": ["ES2021", "ESNext", "DOM"],
-        "allowSyntheticDefaultImports": true,
-        "forceConsistentCasingInFileNames": true,
-        "typeRoots": ["./types", "./node_modules/@types"]
+        "baseUrl": ".",
+        "paths": {
+            "@app/*": ["src/*"]
+        }
     }
 }

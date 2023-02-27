@@ -1,0 +1,5 @@
+{
+    "title": "The application can't be initialized",
+    "instruction": "Our security layer detected some vulnerabilities in your device",
+    "description": "You cannot run this app on a jail broken device, on external storage or on devices with suspicious apps installed."
+}

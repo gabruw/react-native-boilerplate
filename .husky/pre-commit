@@ -1,26 +1,54 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
 
-echo '🏗️👷 Styling, testing and building your project before committing'
+echo "🚀🚀🚀 Starting pre-commit scripts 🚀🚀🚀";
+echo "🐺🐺🐺 Hello my name is Husky and I'll help you with your code";
+echo "";
 
-# Check Prettier standards
+echo "1 - 💅💅💅 It's time to format you code!";
+
 yarn format ||
 (
-    echo '🤢🤮🤢🤮 Its F**KING RAW - Your styling looks disgusting. 🤢🤮🤢🤮
-            Prettier Check Failed. Run yarn format, add changes and try commit again.';
+    echo "🤢🤮🤢🤮 It's FU**ING RAW!!! Your styling looks disgusting 🤢🤮🤢🤮";
+    echo "Format failed, run 'yarn format' to try again";
+
     false;
 )
 
-# If everything passes... Now we can commit
-echo '🤔🤔🤔🤔... Alright... Code looks good to me... Trying to build now. 🤔🤔🤔🤔'
+echo "";
+echo "🤔🤔🤔... Alright... Your code looks good to me, I'll try to build now";
 
-# yarn build ||
-# (
-#     echo '❌👷🔨❌ Better call Bob... Because your build failed ❌👷🔨❌
-#             Next build failed: View the errors above to see why.
-#     '
-#     false;
-# )
+echo "";
+echo "|-------------------------------------------------------------------------|";
+echo "";
 
-# If everything passes... Now we can commit
-echo '✅✅✅✅ You win this time... I am committing this now. ✅✅✅✅'
+echo "2 - 🏗️🔨👷 I called Bob to help us, because it's time to build!";
+
+yarn prebuild ||
+(
+    echo "❌👷🔨❌ Glad Bob is here... ❌👷🔨❌";
+    echo "Build failed, run 'yarn prebuild' to try again";
+
+    false;
+)
+
+echo "";
+echo "🤔🤔🤔... Great... Your code was builded, I'll package all for you";
+
+echo "";
+echo "|-------------------------------------------------------------------------|";
+echo "";
+
+echo "3 - 📦📦📦 Can a dog pack something? Well, it's time to pack!";
+
+git add android/* ||
+(
+    echo "🔥📦🔥📦 I don't know how but this is on fire 🔥📦🔥📦";
+    echo "Stage changes failed, run 'git add .' to try again";
+
+    false;
+)
+
+echo "";
+echo "🎉🎉🎉 Well... you win this time... I'm committing this now!!! 🎉🎉🎉";
+echo "";

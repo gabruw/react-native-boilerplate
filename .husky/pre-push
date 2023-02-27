@@ -1,34 +1,55 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo '🏗️👷 Styling, testing and building your project before committing'
+echo "🚀🚀🚀 Starting pre-push scripts 🚀🚀🚀";
+echo "🐺🐺🐺 Ohh, you already know me right?";
+echo "";
 
-# Check Prettier standards
-yarn check-format ||
+echo "1 - 💅👀🤌 It's time to check the format of your code!";
+
+yarn check:format ||
 (
-    echo '🤢🤮🤢🤮 Its F**KING RAW - Your styling looks disgusting. 🤢🤮🤢🤮
-            Prettier Check Failed. Run yarn format, add changes and try commit again.';
+    echo "🥴😵‍💫🥴😵‍💫 So you're someone who likes to mess things up right? 🥴😵‍💫🥴😵‍💫";
+    echo "Check Format failed, run 'yarn check-format' to try again";
+
     false;
 )
 
-# Check ESLint Standards
-yarn check-lint ||
-(
-        echo '😤🏀👋😤 Get that weak s**t out of here! 😤🏀👋😤
-                ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
-        false;
-)
+echo "";
+echo "🤔🤔🤔... Right... Right... Congratulations on the minimum";
 
-# Check tsconfig standards
-yarn check-types ||
+echo "";
+echo "|-------------------------------------------------------------------------|";
+echo "";
+
+echo "2 - 📖👀🤌 I called Phoenix Wright to check the rules, it's time to check the lint!";
+
+yarn check:lint ||
 (
-    echo '🤡😂❌🤡 Failed Type check. 🤡😂❌🤡
-            Are you seriously trying to write that? Make the changes required above.'
+    echo "😤🏀👋😤 Get that weak s**t out of here! 😤🏀👋😤";
+    echo "ESLint Check failed, run 'yarn check-lint' to try again";
+
     false;
 )
 
-# If everything passes... Now we can commit
-echo '🤔🤔🤔🤔... Alright... Code looks good to me... Trying to build now. 🤔🤔🤔🤔'
+echo "";
+echo "🤔🤔🤔... So your code looks great? Let's see if anyone learned OO";
 
-# If everything passes... Now we can commit
-echo '✅✅✅✅ You win this time... I am committing this now. ✅✅✅✅'
+echo "";
+echo "|-------------------------------------------------------------------------|";
+echo "";
+
+echo "3 - 🪧👀🤌 I'm not your type? Well, it's time to check the types!";
+echo ""
+
+yarn check:types ||
+(
+    echo "🤡😂❌🤡 You're not dumb, you're just... hmmm... quirky right? 🤡😂❌🤡";
+    echo "Types Check failed, run 'yarn check-types' to try again";
+
+    false;
+)
+
+echo "";
+echo "🥳🥳🥳 Your effort brought you this far, It's push time!!! 🥳🥳🥳";
+echo "";

@@ -1,8 +1,0 @@
-{
-    "async-storage": {
-        "errors": {
-            "get-item": "Erro ao recuperar valores do storage. Remova os dados da aplicação (cache) do seu aparelho e tente novamente.",
-            "set-item": "Erro ao adicionar valores ao storage. Remova os dados da aplicação (cache) do seu aparelho e tente novamente."
-        }
-    }
-}
