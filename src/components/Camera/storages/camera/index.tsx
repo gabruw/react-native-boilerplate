@@ -2,10 +2,14 @@ import { Camera, CameraType, FlashMode } from "expo-camera";
 import { createContext, ReactElement, useContext, useMemo, useReducer, useRef } from "react";
 
 import { calculateZoom } from "@app/components/Camera/functions/calculateZoom";
+import { CameraActionTypes } from "@app/components/Camera/storages/camera/actions";
+import { cameraReducer } from "@app/components/Camera/storages/camera/reducer";
+import {
+    CameraContextProps,
+    CameraContextReturn,
+    CameraContextState,
+} from "@app/components/Camera/storages/camera/types";
 import { PinchZoom } from "@app/components/Camera/types";
-import { CameraActionTypes } from "@app/storages/camera/actions";
-import { cameraReducer } from "@app/storages/camera/reducer";
-import { CameraContextProps, CameraContextReturn, CameraContextState } from "@app/storages/camera/types";
 
 const CameraContext = createContext<CameraContextReturn>({} as CameraContextReturn);
 

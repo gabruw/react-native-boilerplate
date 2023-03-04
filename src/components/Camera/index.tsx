@@ -2,7 +2,7 @@ import { CameraType, Camera as ExpoCamera, FlashMode } from "expo-camera";
 import { ReactElement, useEffect } from "react";
 
 import { CameraController } from "@app/components/Camera/components/CameraController";
-import { CameraContextProvider } from "@app/storages/camera";
+import { CameraContextProvider } from "@app/components/Camera/storages/camera";
 
 type CameraProps = {
     type?: CameraType;

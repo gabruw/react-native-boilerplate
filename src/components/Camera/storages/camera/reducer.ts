@@ -1,7 +1,7 @@
 import { CameraType, FlashMode } from "expo-camera";
 
-import { CameraActions, CameraActionTypes } from "@app/storages/camera/actions";
-import { CameraContextState } from "@app/storages/camera/types";
+import { CameraActions, CameraActionTypes } from "@app/components/Camera/storages/camera/actions";
+import { CameraContextState } from "@app/components/Camera/storages/camera/types";
 
 const cameraReducer = (state: CameraContextState, action: CameraActions): CameraContextState => {
     switch (action.type) {
