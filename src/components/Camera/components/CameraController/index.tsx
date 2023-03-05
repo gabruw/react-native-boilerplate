@@ -8,7 +8,7 @@ import { PictureButton } from "@app/components/Camera/components/CameraControlle
 import { TypeButton } from "@app/components/Camera/components/CameraController/components/TypeButton";
 import { ActionsContainer } from "@app/components/Camera/components/CameraController/styles/ActionsContainer";
 import { FlexCamera } from "@app/components/Camera/components/CameraController/styles/FlexCamera";
-import { useCameraContext } from "@app/storages/camera";
+import { useCameraContext } from "@app/components/Camera/storages/camera";
 
 const CameraController = (): ReactElement => {
     const { zoom, type, flash, isLoading, setZoom, setIsLoading, setCameraRef } = useCameraContext();

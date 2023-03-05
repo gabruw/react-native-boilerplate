@@ -41,7 +41,7 @@ echo "";
 
 echo "3 - 📦📦📦 Can a dog pack something? Well, it's time to pack!";
 
-git add android/* -f ||
+git add android/* ||
 (
     echo "🔥📦🔥📦 I don't know how but this is on fire 🔥📦🔥📦";
     echo "Stage changes failed, run 'git add .' to try again";

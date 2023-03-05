@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { IconButton } from "react-native-paper";
 
-import { useCameraContext } from "@app/storages/camera";
+import { useCameraContext } from "@app/components/Camera/storages/camera";
 
 const TypeButton = (): ReactElement => {
     const { toggleCameraType } = useCameraContext();

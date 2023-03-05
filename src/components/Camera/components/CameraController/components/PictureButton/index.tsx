@@ -2,7 +2,7 @@ import { ImageType } from "expo-camera/build/Camera.types";
 import { ReactElement } from "react";
 import { IconButton } from "react-native-paper";
 
-import { useCameraContext } from "@app/storages/camera";
+import { useCameraContext } from "@app/components/Camera/storages/camera";
 
 const PictureButton = (): ReactElement => {
     const { cameraRef } = useCameraContext();
