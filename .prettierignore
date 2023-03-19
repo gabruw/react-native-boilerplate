@@ -6,6 +6,8 @@
 .vscode
 
 # Source/Reports
+ios
 dist
+android
 reports
 node_modules

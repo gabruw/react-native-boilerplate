@@ -102,11 +102,11 @@ All the folders except **pages folder** is considered global stuff, and the same
 
 ### 🌍 Nomenclature
 
-| Pattern                                                   | Category                          |
-| --------------------------------------------------------- | --------------------------------- |
-| [Pascal Case](https://en.wiktionary.org/wiki/Pascal_case) | Components                        |
-| [Camel Case](https://en.wiktionary.org/wiki/CamelCase)    | Functions and hooks               |
-| [Kebab Case](https://en.wiktionary.org/wiki/kebab_case)   | Folders, constants, types, assets |
+| Pattern                                                   | Category                             |
+| --------------------------------------------------------- | ------------------------------------ |
+| [Pascal Case](https://en.wiktionary.org/wiki/Pascal_case) | Components                           |
+| [Camel Case](https://en.wiktionary.org/wiki/CamelCase)    | Functions and hooks                  |
+| [Kebab Case](https://en.wiktionary.org/wiki/kebab_case)   | Folders, constants, types and assets |
 
 ### 🗃 Tests
 
