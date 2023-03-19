@@ -18,7 +18,7 @@ const AnimatedBackdrop = forwardRef<ModalRefProps, AnimatedBackdropProps>(
         const duration = useMemo(() => (loop ? undefined : (source.op / source.fr) * 1000), [loop, source]);
 
         return (
-            <Modal {...rest} ref={ref} duration={duration} dismissable={false} contentContainerStyle={undefined}>
+            <Modal {...rest} ref={ref} duration={duration} dismissible={false} contentContainerStyle={undefined}>
                 <AnimatedLottie
                     loop={loop}
                     source={source}

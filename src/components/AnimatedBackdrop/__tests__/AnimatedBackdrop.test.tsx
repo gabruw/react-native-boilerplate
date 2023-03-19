@@ -16,7 +16,7 @@ const props: AnimatedBackdropProps = {
     },
 };
 
-const setup = (defaultProps = props) => {
+const setup = (defaultProps = props): void => {
     render(
         <ReduxProvider store={store}>
             <PaperProvider>
