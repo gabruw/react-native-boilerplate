@@ -15,7 +15,8 @@
         }
     },
     "transform": {
-        "^.+\\.(js|ts|tsx)$": [
+        "^.+\\.(ts|tsx)$": "ts-jest",
+        "^.+\\.(js|jsx)$": [
             "babel-jest",
             {
                 "rootMode": "upward"
