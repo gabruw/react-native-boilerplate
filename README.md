@@ -135,13 +135,13 @@ All components must be separated as:
 
 ## 🔖 Features
 
-| Test | Idiom   | Router     | API           | Storage       | Security     | Utils    | Visual              |
-| ---- | ------- | ---------- | ------------- | ------------- | ------------ | -------- | ------------------- |
-| Jest | I18next | Navigation | Apollo Client | Redux         | Jail Breaker | Husky    | Paper               |
-|      |         |            |               | Async Storage | Cache Loader | Camera   | Lottie              |
-|      |         |            |               |               |              | Net Info | Splash Screen       |
-|      |         |            |               |               |              |          | Styled Components   |
-|      |         |            |               |               |              |          | Local Fonts (Inter) |
+| Test | Idiom   | Router     | API           | Form      | Storage       | Security     | Utils    | CI/Quality | Visual            |
+| ---- | ------- | ---------- | ------------- | --------- | ------------- | ------------ | -------- | ---------- | ----------------- |
+| Jest | I18next | Navigation | Apollo Client | Zod       | Redux         | Jail Breaker | Camera   | Husky      | Paper             |
+|      |         |            |               | Hook Form | Async Storage | Cache Loader | Net Info | ESLint     | Lottie            |
+|      |         |            |               |           |               |              |          | Prettier   | Inter Fonts       |
+|      |         |            |               |           |               |              |          |            | Splash Screen     |
+|      |         |            |               |           |               |              |          |            | Styled Components |
 
 ## 📑 License
 
