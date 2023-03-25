@@ -17,10 +17,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.5.0
 
       - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v3.6.0
         with:
           always-auth: true
           scope: '@entrou'
@@ -34,7 +34,7 @@ jobs:
         run: yarn install
 
       - name: Cache the artifact
-        uses: actions/cache@v3.0.8
+        uses: actions/cache@v3.3.1
         id: setup
         with:
           path: ./*
@@ -52,10 +52,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.5.0
 
       - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v3.6.0
         with:
           always-auth: true
           scope: '@gabruw'
@@ -63,7 +63,7 @@ jobs:
           registry-url: https://npm.pkg.github.com/
 
       - name: Restore the cached files
-        uses: actions/cache@v3.0.8
+        uses: actions/cache@v3.3.1
         id: setup
         with:
           path: ./*
@@ -90,10 +90,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.5.0
 
       - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v3.6.0
         with:
           always-auth: true
           scope: '@gabruw'
@@ -101,7 +101,7 @@ jobs:
           registry-url: https://npm.pkg.github.com/
 
       - name: Restore the cached files
-        uses: actions/cache@v3.0.8
+        uses: actions/cache@v3.3.1
         id: setup
         with:
           path: ./*
