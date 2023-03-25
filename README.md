@@ -102,11 +102,11 @@ All the folders except **pages folder** is considered global stuff, and the same
 
 ### 🌍 Nomenclature
 
-| Pattern                                                   | Category                          |
-| --------------------------------------------------------- | --------------------------------- |
-| [Pascal Case](https://en.wiktionary.org/wiki/Pascal_case) | Components                        |
-| [Camel Case](https://en.wiktionary.org/wiki/CamelCase)    | Functions and hooks               |
-| [Kebab Case](https://en.wiktionary.org/wiki/kebab_case)   | Folders, constants, types, assets |
+| Pattern                                                   | Category                             |
+| --------------------------------------------------------- | ------------------------------------ |
+| [Pascal Case](https://en.wiktionary.org/wiki/Pascal_case) | Components                           |
+| [Camel Case](https://en.wiktionary.org/wiki/CamelCase)    | Functions and hooks                  |
+| [Kebab Case](https://en.wiktionary.org/wiki/kebab_case)   | Folders, constants, types and assets |
 
 ### 🗃 Tests
 
@@ -135,13 +135,13 @@ All components must be separated as:
 
 ## 🔖 Features
 
-| Test | Idiom   | Router     | API           | Storage       | Security     | Utils    | Visual              |
-| ---- | ------- | ---------- | ------------- | ------------- | ------------ | -------- | ------------------- |
-| Jest | I18next | Navigation | Apollo Client | Redux         | Jail Breaker | Husky    | Paper               |
-|      |         |            |               | Async Storage | Cache Loader | Camera   | Lottie              |
-|      |         |            |               |               |              | Net Info | Splash Screen       |
-|      |         |            |               |               |              |          | Styled Components   |
-|      |         |            |               |               |              |          | Local Fonts (Inter) |
+| Test | Idiom   | Router     | API           | Form      | Storage       | Security     | Utils    | CI/Quality | Visual            |
+| ---- | ------- | ---------- | ------------- | --------- | ------------- | ------------ | -------- | ---------- | ----------------- |
+| Jest | I18next | Navigation | Apollo Client | Zod       | Redux         | Jail Breaker | Camera   | Husky      | Paper             |
+|      |         |            |               | Hook Form | Async Storage | Cache Loader | Net Info | ESLint     | Lottie            |
+|      |         |            |               |           |               |              |          | Prettier   | Inter Fonts       |
+|      |         |            |               |           |               |              |          |            | Splash Screen     |
+|      |         |            |               |           |               |              |          |            | Styled Components |
 
 ## 📑 License
 
@@ -219,5 +219,5 @@ Distributed under the MIT License. See [LICENSE](https://github.com/gabruw/react
 
 <!-- PRE REQUISITES - BADGE - Yarn -->
 
-[yarn-version]: https://shields.io/badge/yarn->=1.13.0-%232C8EBB?logo=npm&style=for-the-badge&logoColor=white
+[yarn-version]: https://shields.io/badge/yarn->=1.13.0-%232C8EBB?logo=yarn&style=for-the-badge&logoColor=white
 [yarn-installation]: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm

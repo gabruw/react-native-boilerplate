@@ -10,7 +10,7 @@ const props: IconProps = {
     focused: false,
 };
 
-const setup = () => {
+const setup = (): void => {
     render(<Icon {...props} />);
 };
 

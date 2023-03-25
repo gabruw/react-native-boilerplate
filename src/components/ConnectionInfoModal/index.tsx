@@ -13,7 +13,7 @@ const ConnectionInfoModal = (): ReactElement => {
     const { isInternetReachable } = useNetInfo();
 
     return (
-        <Modal dismissable={false} isVisible={!!isInternetReachable}>
+        <Modal dismissible={false} isVisible={!!isInternetReachable}>
             <AnimatedLottie loop autoPlay resizeMode="contain" source={NoConnectionAnimation} />
 
             <ModalTitle variant="titleMedium">{t("errors.connection.title")}</ModalTitle>

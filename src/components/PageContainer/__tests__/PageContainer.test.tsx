@@ -10,7 +10,7 @@ const props: PageContainerProps = {
     hasStatusBar: true,
 };
 
-const setup = (defaultProps = props) => {
+const setup = (defaultProps = props): void => {
     render(
         <PageContainer {...defaultProps}>
             <Text>{text}</Text>

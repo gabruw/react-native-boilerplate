@@ -1,10 +1,9 @@
 import React, { forwardRef, ReactElement, ReactNode, useEffect, useImperativeHandle, useState } from "react";
-import { Dimensions } from "react-native";
 import { ModalProps as PaperModalProps, Portal } from "react-native-paper";
 
-import { ContentContainer } from "@app/components/Modal/styles/ContentContainer";
-import { FullScreenModal } from "@app/components/Modal/styles/FullScreenModal";
-import { usePaperTheme } from "@app/themes/hooks/usePaperTheme";
+import { useFullScreenModalStyles } from "@app/components/Modal/styles/style-sheets/useFullScreenModalStyles";
+import { ContentContainer } from "@app/components/Modal/styles/styled-components/ContentContainer";
+import { FullScreenModal } from "@app/components/Modal/styles/styled-components/FullScreenModal";
 
 type ModalRefProps = {
     show: () => void;
@@ -19,16 +18,14 @@ type ModalProps = {
     children?: ReactNode;
     style?: PaperModalProps["style"];
     testID?: PaperModalProps["testID"];
-    dismissable?: PaperModalProps["dismissable"];
+    dismissible?: PaperModalProps["dismissable"];
     contentContainerStyle?: PaperModalProps["contentContainerStyle"];
     overlayAccessibilityLabel?: PaperModalProps["overlayAccessibilityLabel"];
 };
 
-const dimensions = Dimensions.get("screen");
-
 const Modal = forwardRef<ModalRefProps, ModalProps>(
     ({ onClose, duration, children, isVisible: defaultVisibility = false, ...props }, ref): ReactElement => {
-        const theme = usePaperTheme();
+        const fullScreenModalStyles = useFullScreenModalStyles();
         const [isVisible, setIsVisible] = useState<boolean>(defaultVisibility);
 
         const onDismiss = () => {
@@ -55,13 +52,7 @@ const Modal = forwardRef<ModalRefProps, ModalProps>(
                 <FullScreenModal
                     visible={isVisible}
                     onDismiss={onDismiss}
-                    contentContainerStyle={{
-                        borderRadius: 16,
-                        paddingBottom: 32,
-                        paddingHorizontal: 32,
-                        backgroundColor: theme.colors.background,
-                        width: dimensions.width - (dimensions.width * 20) / 100,
-                    }}
+                    contentContainerStyle={fullScreenModalStyles.contentContainer}
                     {...props}
                 >
                     <ContentContainer>{children}</ContentContainer>
