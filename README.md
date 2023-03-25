@@ -219,5 +219,5 @@ Distributed under the MIT License. See [LICENSE](https://github.com/gabruw/react
 
 <!-- PRE REQUISITES - BADGE - Yarn -->
 
-[yarn-version]: https://shields.io/badge/yarn->=1.13.0-%232C8EBB?logo=npm&style=for-the-badge&logoColor=white
+[yarn-version]: https://shields.io/badge/yarn->=1.13.0-%232C8EBB?logo=yarn&style=for-the-badge&logoColor=white
 [yarn-installation]: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
