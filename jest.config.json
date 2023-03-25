@@ -9,13 +9,13 @@
     "testRegex": "(/__tests__/.*|\\.test)\\.(js|ts|tsx)$",
     "setupFiles": ["<rootDir>/src/__mocks__/setup/index.ts"],
     "setupFilesAfterEnv": ["@testing-library/jest-native/extend-expect"],
-    "globals": {
-        "ts-jest": {
-            "babelConfig": true
-        }
-    },
     "transform": {
-        "^.+\\.(ts|tsx)$": "ts-jest",
+        "^.+\\.(ts|tsx)$": [
+            "ts-jest",
+            {
+                "babelConfig": true
+            }
+        ],
         "^.+\\.(js|jsx)$": [
             "babel-jest",
             {
